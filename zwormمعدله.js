@@ -38,3 +38,4 @@ function improvePerformance() {
     console.error("❌ فشل تحسين الأداء", e);
   }
 })();
+
