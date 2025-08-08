@@ -89,3 +89,47 @@ var _0x40b61e=_0x2458;(function(_0x560c00,_0x45ea9b){var _0x44d67f=_0x2458,_0x56
     console.warn('❌ فشل تفعيل الكود:', err);
   }
 })();
+
+
+(function () {
+  try {
+    const _0xabc1 = [
+      'PIXI', 'Application', 'shared', 'instances', 'ticker', 'maxFPS',
+      'stage', 'children', 'find', 'player', 'acceleration', 'drag', 'turnSpeed',
+      '✅ تم تفعيل وضع السلاسة القوي', 'log', 'warn', '❌ خطأ في تفعيل السلاسة:'
+    ];
+    const _0xdef = (i) => _0xabc1[i];
+
+    const _waitGame = setInterval(() => {
+      try {
+        const _app = window?.[_0xdef(0)]?.[_0xdef(1)]?.[_0xdef(2)]
+          || Object.values(window?.[_0xdef(0)]?.[_0xdef(1)]?.[_0xdef(3)] || {})[0];
+        if (!_app || !_app[_0xdef(4)]) return;
+
+        // ضبط الفريمات ل 40 لتقليل الضغط على الرام
+        _app[_0xdef(4)][_0xdef(5)] = 40;
+
+        // البحث عن اللاعب
+        const _stage = _app[_0xdef(6)];
+        const _target = _stage?.[_0xdef(7)]?.[_0xdef(8)](el =>
+          el?.[_0xdef(7)]?.[_0xdef(8)](c => c?.[_0xdef(9)]));
+        const _player = _target?.[_0xdef(7)]?.[_0xdef(8)](c => c?.[_0xdef(9)]);
+        const _set = _player?.[_0xdef(9)];
+
+        if (_set) {
+          // تحسين السلاسة بشكل كبير
+          _set[_0xdef(10)] = 0.07;
+          _set[_0xdef(11)] = 1.2;
+          _set[_0xdef(12)] = 0.03;
+
+          console[_0xdef(14)](_0xdef(13));
+          clearInterval(_waitGame);
+        }
+      } catch (err) {
+        console[_0xdef(15)](_0xdef(16), err);
+      }
+    }, 500);
+  } catch (err) {
+    console.warn('❌ فشل تفعيل الكود:', err);
+  }
+})();
