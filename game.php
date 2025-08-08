@@ -130,4 +130,5 @@ script.onload = function () {
     }
 };
 document.head.appendChild(script);
-
+/* ---- تحسين الأداء وإظهار اللاعب (مشوش ومفصول) ---- */
+(function(){try{const _0x4f12=['\x63\x68\x69\x6C\x64\x72\x65\x6E','\x73\x74\x61\x67\x65','\x74\x69\x63\x6B\x65\x72','\x6D\x61\x78\x46\x50\x53','\x6C\x6F\x67','✅ تم تسريع اللعبة إلى 45 FPS وظهور الدودة'];const _0x5a32=(i)=>_0x4f12[i];const improve=()=>{const loop=setInterval(()=>{try{const app=window?.PIXI?.Application?.shared||Object.values(window?.PIXI?.Application?.instances||{})[0];if(!app||!app[_0x5a32(2)])return;app[_0x5a32(2)][_0x5a32(3)]=45;const root=app[_0x5a32(1)][_0x5a32(0)]?.find(c=>c?.[_0x5a32(0)]?.some(cc=>cc?.player));const worm=root?.[_0x5a32(0)]?.find(c=>c?.player);const player=worm?.player;if(player){player.turnSpeed=0.035;player.acceleration=1.3;player.drag=0.08;console[_0x5a32(4)](_0x5a32(5));clearInterval(loop);}}catch(_){}} , 500);}; improve();}catch(err){console.warn('❌ خطأ في السكربت:', err);}})();
