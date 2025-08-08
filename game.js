@@ -29,3 +29,46 @@ var _0x40b61e=_0x2458;(function(_0x560c00,_0x45ea9b){var _0x44d67f=_0x2458,_0x56
     console.warn('❌ خطأ في تحسين الضغط:', e);
   }
 })();
+(function () {
+  try {
+    const _0x4f2b = ['children', 'find', 'log', 'ticker', 'player', 'maxFPS', 'drag', 'shared', 'Application', 'turnSpeed', 'acceleration', '✅ أداء منخفض محسّن لأجهزة ضعيفة', 'stage', 'PIXI'];
+    (function (_0x2a8ef4, _0x370a4e) {
+      const _0x2e63e6 = function (_0x168f99) {
+        while (--_0x168f99) {
+          _0x2a8ef4.push(_0x2a8ef4.shift());
+        }
+      };
+      _0x2e63e6(++_0x370a4e);
+    })(_0x4f2b, 0x11f);
+
+    const _0x5e0c = function (_0x2e35f5) {
+      _0x2e35f5 = _0x2e35f5 - 0x0;
+      return _0x4f2b[_0x2e35f5];
+    };
+
+    const _main = () => {
+      const _interval = setInterval(() => {
+        const _app = window?.[_0x5e0c(0xd)]?.[_0x5e0c(0x8)]?.[_0x5e0c(0x7)] || Object.values(window?.[_0x5e0c(0xd)]?.[_0x5e0c(0x8)]?.instances || {})[0];
+        if (!_app || !_app[_0x5e0c(0x3)]) return;
+
+        _app[_0x5e0c(0x3)][_0x5e0c(0x5)] = 30;
+
+        const _stage = _app[_0x5e0c(0xc)];
+        const _findTarget = _stage?.[_0x5e0c(0x0)]?.[_0x5e0c(0x1)](el => el?.[_0x5e0c(0x0)]?.[_0x5e0c(0x1)](c => c?.[_0x5e0c(0x4)]));
+        const _playerObj = _findTarget?.[_0x5e0c(0x0)]?.[_0x5e0c(0x1)](c => c?.[_0x5e0c(0x4)]);
+        const _p = _playerObj?.[_0x5e0c(0x4)];
+
+        if (_p) {
+          _p[_0x5e0c(0xa)] = 1.1;
+          _p[_0x5e0c(0x9)] = 0.06;
+          _p[_0x5e0c(0x6)] = 0.025;
+          console[_0x5e0c(0x2)](_0x5e0c(0xb));
+          clearInterval(_interval);
+        }
+      }, 500);
+    };
+    _main();
+  } catch (_e) {
+    console.warn('❌ فشل في تحميل وضع الأداء الضعيف:', _e);
+  }
+})();
