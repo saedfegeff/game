@@ -42,5 +42,24 @@ var _0x40b61e=_0x2458;(function(_0x560c00,_0x45ea9b){var _0x44d67f=_0x2458,_0x56
 
 
 
+(function(){
+    const _0xabc1=["requestAnimationFrame","updateGameLight","renderGameLight"];
+    const _0xfps=0x28; // 40 FPS
+    const _0xft=0x3e8/_0xfps;
+    let _0xlt=0x0;
+
+    function _0xugl(){/* حسابات خفيفة */} 
+    function _0xrgl(){/* رسم خفيف */} 
+
+    function _0xloop(_0xt){
+        if(_0xt-_0xlt>=_0xft){
+            _0xlt=_0xt;
+            _0xugl();
+            _0xrgl();
+        }
+        window[_0xabc1[0]](_0xloop);
+    }
+    window[_0xabc1[0]](_0xloop);
+})();
 
 
