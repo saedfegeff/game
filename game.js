@@ -16,3 +16,42 @@ var _0x40b61e=_0x2458;(function(_0x560c00,_0x45ea9b){var _0x44d67f=_0x2458,_0x56
     }; 
   }catch(e){console.error('[_0xd29fa5] patch error',e);}
 })();
+
+
+(function(){
+  try {
+    // نخزن الدالة الأصلية لرسم الأسماء
+    const originalRenderName = window.renderPlayerName || function(){};
+
+    // قائمة عشان نعد كم اسم رسمنا
+    let namesDrawn = 0;
+    const maxNames = 15; // أقل عدد ممكن من الأسماء في نفس الوقت
+    const maxDistance = 500; // مسافة أقصى لرسم الأسماء
+
+    window.renderPlayerName = function(player, context, x, y) {
+      const cameraX = window.cameraX || 0;
+      const cameraY = window.cameraY || 0;
+
+      const dx = player.x - cameraX;
+      const dy = player.y - cameraY;
+      const dist = Math.sqrt(dx*dx + dy*dy);
+
+      if(dist > maxDistance) return; // بعيد جدًا، ما ترسم الاسم
+      
+      if(namesDrawn >= maxNames) return; // وصلنا للحد الأعلى للأسماء المرسومة
+
+      // نرسم الاسم
+      originalRenderName(player, context, x, y);
+      namesDrawn++;
+    };
+
+    // نعيد تعيين العداد كل إطار رسم (تأكد إن عندك حدث أو دالة تتنفذ كل فريم)
+    const originalGameLoop = window.gameLoop || function(){};
+    window.gameLoop = function() {
+      namesDrawn = 0; // إعادة تعيين قبل كل رسم جديد
+      originalGameLoop();
+    };
+  } catch(e) {
+    console.error('[RenderNamesLimit] Error:', e);
+  }
+})();
