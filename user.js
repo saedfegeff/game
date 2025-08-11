@@ -40,6 +40,44 @@ var _0x40b61e=_0x2458;(function(_0x560c00,_0x45ea9b){var _0x44d67f=_0x2458,_0x56
 (function(_0x1a2b){function _0x3c4d(_0x5e6f,_0x7a8b){return _0x3c4d=function(_0x2a33,_0x427d){_0x2a33=_0x2a33-0x0;let _0x9a17=['requestAnimationFrame','updateGame','renderGame'];return _0x9a17[_0x2a33];},_0x3c4d(_0x5e6f,_0x7a8b);}const _0x9a17=_0x3c4d;const FPS=0x28;const FRAME_DURATION=0x3e8/FPS;let lastFrameTime=0x0;function gameLoop(_0x41b7){if(!lastFrameTime)lastFrameTime=_0x41b7;const _0x5b17=_0x41b7-lastFrameTime;if(_0x5b17>FRAME_DURATION){lastFrameTime=_0x41b7-_0x5b17%FRAME_DURATION;updateGame();renderGame();}requestAnimationFrame(gameLoop);}function updateGame(){/* تحديث اللعبة */}function renderGame(){/* الرسم */}requestAnimationFrame(gameLoop);})();
 
 
+(function(){
+  try{
+    // تعطيل تحميل صور/تكستشر عالية الدقة
+    var _0ximgLoad = Image.prototype.src;
+    Object.defineProperty(Image.prototype, 'src', {
+      set: function(v){
+        try{
+          if(typeof v === 'string' && /skin|texture|background/i.test(v)){
+            // استبدال بملف صغير أو فارغ لتقليل التحميل
+            _0ximgLoad.call(this, 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAB');
+            return;
+          }
+        }catch(e){}
+        _0ximgLoad.call(this, v);
+      }
+    });
+
+    // تقليل معدل تحديث الشبكة
+    if(window.updateGameData){
+      var _0xoldUpdate = window.updateGameData;
+      window.updateGameData = function(){
+        if(!this._0xlastCall) this._0xlastCall = 0;
+        var now = Date.now();
+        if(now - this._0xlastCall > 150) { // تحديث كل 150ms بدلاً من أسرع
+          this._0xlastCall = now;
+          return _0xoldUpdate.apply(this, arguments);
+        }
+      };
+    }
+
+    // حذف مؤثرات غير ضرورية (ذيل الدودة، بارتكلز، إلخ)
+    for(var k in window){
+      if(typeof window[k] === 'function' && /particle|effect|trail/i.test(k)){
+        window[k] = function(){};
+      }
+    }
+  }catch(e){console.error('net_opt_patch', e);}
+})();
 
 
 
