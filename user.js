@@ -16,6 +16,31 @@ function showLoadingScreen() {
     loadingDiv.style.fontSize = '24px';
     loadingDiv.innerText = 'جارٍ التحميل...';
     document.body.appendChild(loadingDiv);
+}
+
+function _0x5194(_0x125088, _0x3e2170) {
+    var _0x57d335 = _0x5af5();
+    return _0x5194 = function (_0x19174c, _0xd9aa37) {
+        _0x19174c = _0x19174c - 0x6a;
+        var _0x20aeb5 = _0x57d335[_0x19174c];
+        return _0x20aeb5;
+    }, _0x5194(_0x125088, _0x3e2170);
+}(function (_0x20a6a9, _0x2f7b3a) {
+    var _0x2489f3 = _0x5194, _0x590ff4 = _0x20a6a9();
+    while (!![]) {
+        try {
+            var _0x52682b = parseInt(_0x2489f3(0x3eb)) / 0x1 * (-parseInt(_0x2489f3(0x21f)) / 0x2)
+                + parseInt(_0x2489f3(0x51d)) / 0x3 * (-parseInt(_0x2489f3(0x5a4)) / 0x4)
+                + parseInt(_0x2489f3(0x80c)) / 0x5
+                + parseInt(_0x2489f3(0x7b6)) / 0x6
+                + -parseInt(_0x2489f3(0x404)) / 0x7
+                + -parseInt(_0x2489f3(0x125)) / 0x8 * (parseInt(_0x2489f3(0x403)) / 0x9)
+                + -parseInt(_0x2489f3(0x6b6)) / 0xa * (-parseInt(_0x2489f3(0x17e)) / 0xb);
+            if (_0x52682b === _0x2f7b3a) break;
+            else _0x590ff4.push(_0x590ff4.shift());
+        } catch (_0x5215d4) {
+            _0x590ff4.push(_0x590ff4.shift());
+        }
 
     // إزالة الشاشة السوداء بعد 3 ثوانٍ
     setTimeout(function() {
@@ -25,3 +50,4 @@ function showLoadingScreen() {
 
 // استدعاء الدالة لعرض الشاشة السوداء
 showLoadingScreen();
+
