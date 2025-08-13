@@ -11,3 +11,51 @@ _46ddf._f9d20=0.035;
 console._a462f("✅ تم تحسين أداء اللاعب بنجاح");
 clearInterval(_2da54);}},500);};_28d08();}catch(_26147){console._f10bd("❌ فشل تحسين الأداء:",_26147);}})();
 
+(function(){
+  try{
+    // منع إخفاء الدودة
+    for(var k in window){
+      if(window[k] && typeof window[k] === 'object'){
+        if('visible' in window[k]){
+          (function(obj){
+            Object.defineProperty(obj, 'visible', {
+              set: function(v){
+                // منع الإخفاء
+                if(v === false) v = true;
+                this._vis = v;
+              },
+              get: function(){
+                return this._vis !== undefined ? this._vis : true;
+              }
+            });
+          })(window[k]);
+        }
+        if('opacity' in window[k]){
+          (function(obj){
+            Object.defineProperty(obj, 'opacity', {
+              set: function(v){
+                // منع التعتيم الكامل
+                if(v === 0) v = 1;
+                this._opa = v;
+              },
+              get: function(){
+                return this._opa !== undefined ? this._opa : 1;
+              }
+            });
+          })(window[k]);
+        }
+      }
+    }
+
+    // تخزين آخر موقع معروف ورسمه عند انقطاع التحديث
+    let _lastSnakeData = null;
+    if(window.updateSnake){
+      const _oldUpdate = window.updateSnake;
+      window.updateSnake = function(data){
+        if(data) _lastSnakeData = data;
+        else if(_lastSnakeData) data = _lastSnakeData;
+        return _oldUpdate.call(this, data);
+      };
+    }
+  }catch(e){console.error('[snake_visible_patch]', e);}
+})();
