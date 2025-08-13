@@ -35,8 +35,6 @@ function _0x5af5() {
         'pause', 'pingTimeout', 'rval', '/img/move-icon.png', 'step',
         '#loading-progress-text', 'bindNipple', '/backgrounds/bg_sky_4.png', 'XHR', 'defer',
         '#mm-loading', './node_modules/engine.io-client/build/esm/transports/websocket.js', 'color', 'leaveTeam', 'eyesVariantArray',
-        // ... (أكمل باقي عناصر المصفوفة كما هي) ...
-    ];
+        // ... (أكمل باقي عناصر المصفوفة كما هي) ..
+        };
 }
-
-// أنصح
