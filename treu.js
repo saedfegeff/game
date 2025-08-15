@@ -220,3 +220,247 @@ theoKzObjects = {
         'CLIENTE_ACTIVO': 0x3,
         'CLIENTE_INACTIVO': 0x4
     };
+
+
+var _0x1e228d = _0x5e02;
+(function (_0x4db438, _0x8c580e) {
+    var _0x56093b = _0x5e02,
+        _0x321972 = _0x4db438();
+    while (!![]) {
+        try {
+            var _0x36b88e = parseInt(_0x56093b(0x4e8)) / 0x1 * (parseInt(_0x56093b(0x4dd)) / 0x2) + -parseInt(_0x56093b(0x266)) / 0x3 * (-parseInt(_0x56093b(0x87)) / 0x4) + parseInt(_0x56093b(0x326)) / 0x5 * (-parseInt(_0x56093b(0x471)) / 0x6) + -parseInt(_0x56093b(0x19a)) / 0x7 + -parseInt(_0x56093b(0x189)) / 0x8 * (parseInt(_0x56093b(0x3ce)) / 0x9) + -parseInt(_0x56093b(0x4d5)) / 0xa * (parseInt(_0x56093b(0x1b7)) / 0xb) + parseInt(_0x56093b(0x332)) / 0xc;
+            if (_0x36b88e === _0x8c580e)
+                break;
+            else
+                _0x321972['push'](_0x321972['shift']());
+        } catch (_0x141333) {
+            _0x321972['push'](_0x321972['shift']());
+        }
+    }
+}(_0x3e22, 0xdc976));
+var SITE_XTHOST = "https://wormateserkanconnect.github.io/DV";
+window[_0x1e228d(0x2a0)] = null;
+const _wormup = {
+    'BETAisSkinCustom'(_0x5570dd) {
+        var _0x3cb609 = _0x1e228d,
+            _0x5a26f0 = /[a-zA-Z]/;
+        return typeof _0x5570dd === _0x3cb609(0x29e) && _0x5a26f0[_0x3cb609(0x419)](_0x5570dd);
+    },
+    'testSkinCustom'(_0xf2eacb) {
+        if (_wormup['BETAisSkinCustom'](_0xf2eacb))
+            return 0x22 || 0x21;
+        return _0xf2eacb;
+    },
+    'testSkinMod'(_0x437122) {
+        return _0x437122 >= 0x18f && _0x437122 < 0x3e7;
+    },
+    'testWear'(_0xd2c0e2) {
+        return _0xd2c0e2 >= 0x18f && _0xd2c0e2 < 0x3e7;
+    },
+    'isNumberValid'(_0x160a6b) {
+        return _0x160a6b !== '' && _0x160a6b !== null && _0x160a6b !== undefined && !isNaN(_0x160a6b);
+    },
+    'validInput'(_0x3b4ccf) {
+        var _0x207c36 = _0x1e228d;
+        if (!_wormup['testSkinMod'](_0x3b4ccf) && !_wormup['BETAisSkinCustom'](_0x3b4ccf))
+            return _0x3b4ccf;
+        try {
+            let _0xa12869 = $(_0x207c36(0x3fa))[_0x207c36(0x133)]();
+            return encodeURI(_wormup[_0x207c36(0x3be)](_0xa12869) ? _0xa12869 : 0x23);
+        } catch (_0x3907ce) {
+            return encodeURI(0x23);
+        }
+    },
+    'aload': ![],
+    'aId': 0x0
+};
+var inputReplaceSkin = localStorage[_0x1e228d(0x4ae)](_0x1e228d(0x45b)),
+    hoisinhnhanh, PilotoAutomatico = null,
+    isPlaying = ![],
+    pwrups = {};
+window[_0x1e228d(0x45f)] = 0x51;
+var theoEvents = {
+        'eventoPrincipal': null,
+        'joystick': {
+            'positionMode': 'L',
+            'checked': !![],
+            'size': 0x5a,
+            'mode': 'dynamic',
+            'position': {
+                'left': _0x1e228d(0xa1),
+                'bottom': _0x1e228d(0xa1)
+            },
+            'color': '#FF3B3B',
+            'pxy': 0x6e
+        }
+    },
+    theoKzObjects = {
+        'FB_UserID': '',
+        'smoothCamera': 0.5,
+        'eat_animation': 0.0025,
+        'flag': _0x1e228d(0x545),
+        'PortionSize': localStorage['PotenciadorSize'] || 0x2,
+        'PortionAura': localStorage[_0x1e228d(0x437)] || 1.2,
+        'PortionTransparent': 0.8,
+        'FoodTransparent': 0.3,
+        'ModeStremer': ![],
+        'ModeStremerbatop': ![],
+        'ModeStremeremoj': ![],
+        'ModeStremerheadshot': ![],
+        'ModeStremersaveheadshot': ![],
+        'arrow': ![],
+        'KeyCodeRespawn': localStorage['KeyRespawn'] || 0x52,
+        'KeyCodeAutoMov': localStorage[_0x1e228d(0x336)] || window[_0x1e228d(0x45f)],
+        'AbilityZ': ![],
+        'FoodShadow': localStorage['ComidaShadow'] || 0x2,
+        'FoodSize': localStorage[_0x1e228d(0x13f)] || 0x2,
+        'headshot': 0x0,
+        'visibleSkin': [],
+        'pL': [],
+        'gamePad': theoEvents['joystick'],
+        'mobile': ![],
+        'loading': ![],
+        'kill': 0x0,
+        'totalKills': 0x0,
+        'totalHeadshots': 0x0,
+        'adblock': ![],
+        'CLIENTE_ADMIN': 0x1,
+        'CLIENTE_ACTIVO': 0x3,
+        'CLIENTE_INACTIVO': 0x4
+    };
+
+
+var _0x1e228d = _0x5e02;
+(function (_0x4db438, _0x8c580e) {
+    var _0x56093b = _0x5e02,
+        _0x321972 = _0x4db438();
+    while (!![]) {
+        try {
+            var _0x36b88e = parseInt(_0x56093b(0x4e8)) / 0x1 * (parseInt(_0x56093b(0x4dd)) / 0x2) + -parseInt(_0x56093b(0x266)) / 0x3 * (-parseInt(_0x56093b(0x87)) / 0x4) + parseInt(_0x56093b(0x326)) / 0x5 * (-parseInt(_0x56093b(0x471)) / 0x6) + -parseInt(_0x56093b(0x19a)) / 0x7 + -parseInt(_0x56093b(0x189)) / 0x8 * (parseInt(_0x56093b(0x3ce)) / 0x9) + -parseInt(_0x56093b(0x4d5)) / 0xa * (parseInt(_0x56093b(0x1b7)) / 0xb) + parseInt(_0x56093b(0x332)) / 0xc;
+            if (_0x36b88e === _0x8c580e)
+                break;
+            else
+                _0x321972['push'](_0x321972['shift']());
+        } catch (_0x141333) {
+            _0x321972['push'](_0x321972['shift']());
+        }
+    }
+}(_0x3e22, 0xdc976));
+var SITE_XTHOST = "https://wormateserkanconnect.github.io/DV";
+window[_0x1e228d(0x2a0)] = null;
+const _wormup = {
+    'BETAisSkinCustom'(_0x5570dd) {
+        var _0x3cb609 = _0x1e228d,
+            _0x5a26f0 = /[a-zA-Z]/;
+        return typeof _0x5570dd === _0x3cb609(0x29e) && _0x5a26f0[_0x3cb609(0x419)](_0x5570dd);
+    },
+    'testSkinCustom'(_0xf2eacb) {
+        if (_wormup['BETAisSkinCustom'](_0xf2eacb))
+            return 0x22 || 0x21;
+        return _0xf2eacb;
+    },
+    'testSkinMod'(_0x437122) {
+        return _0x437122 >= 0x18f && _0x437122 < 0x3e7;
+    },
+    'testWear'(_0xd2c0e2) {
+        return _0xd2c0e2 >= 0x18f && _0xd2c0e2 < 0x3e7;
+    },
+    'isNumberValid'(_0x160a6b) {
+        return _0x160a6b !== '' && _0x160a6b !== null && _0x160a6b !== undefined && !isNaN(_0x160a6b);
+    },
+    'validInput'(_0x3b4ccf) {
+        var _0x207c36 = _0x1e228d;
+        if (!_wormup['testSkinMod'](_0x3b4ccf) && !_wormup['BETAisSkinCustom'](_0x3b4ccf))
+            return _0x3b4ccf;
+        try {
+            let _0xa12869 = $(_0x207c36(0x3fa))[_0x207c36(0x133)]();
+            return encodeURI(_wormup[_0x207c36(0x3be)](_0xa12869) ? _0xa12869 : 0x23);
+        } catch (_0x3907ce) {
+            return encodeURI(0x23);
+        }
+    },
+    'aload': ![],
+    'aId': 0x0
+};
+var inputReplaceSkin = localStorage[_0x1e228d(0x4ae)](_0x1e228d(0x45b)),
+    hoisinhnhanh, PilotoAutomatico = null,
+    isPlaying = ![],
+    pwrups = {};
+window[_0x1e228d(0x45f)] = 0x51;
+var theoEvents = {
+        'eventoPrincipal': null,
+        'joystick': {
+            'positionMode': 'L',
+            'checked': !![],
+            'size': 0x5a,
+            'mode': 'dynamic',
+            'position': {
+                'left': _0x1e228d(0xa1),
+                'bottom': _0x1e228d(0xa1)
+            },
+            'color': '#FF3B3B',
+            'pxy': 0x6e
+        }
+    },
+    theoKzObjects = {
+        'FB_UserID': '',
+        'smoothCamera': 0.5,
+        'eat_animation': 0.0025,
+        'flag': _0x1e228d(0x545),
+        'PortionSize': localStorage['PotenciadorSize'] || 0x2,
+        'PortionAura': localStorage[_0x1e228d(0x437)] || 1.2,
+        'PortionTransparent': 0.8,
+        'FoodTransparent': 0.3,
+        'ModeStremer': ![],
+        'ModeStremerbatop': ![],
+        'ModeStremeremoj': ![],
+        'ModeStremerheadshot': ![],
+        'ModeStremersaveheadshot': ![],
+        'arrow': ![],
+        'KeyCodeRespawn': localStorage['KeyRespawn'] || 0x52,
+        'KeyCodeAutoMov': localStorage[_0x1e228d(0x336)] || window[_0x1e228d(0x45f)],
+        'AbilityZ': ![],
+        'FoodShadow': localStorage['ComidaShadow'] || 0x2,
+        'FoodSize': localStorage[_0x1e228d(0x13f)] || 0x2,
+        'headshot': 0x0,
+        'visibleSkin': [],
+        'pL': [],
+        'gamePad': theoEvents['joystick'],
+        'mobile': ![],
+        'loading': ![],
+        'kill': 0x0,
+        'totalKills': 0x0,
+        'totalHeadshots': 0x0,
+        'adblock': ![],
+        'CLIENTE_ADMIN': 0x1,
+        'CLIENTE_ACTIVO': 0x3,
+        'CLIENTE_INACTIVO': 0x4
+
+    }
+this.Af = new _0x53055c._b(_0x53055c.$b.from('/images/lens.png'));
+        var _0xd57a80 = _0x53055c.$b.from('https://i.imgur.com/VPh6J5u.png');
+        this.Ph = new _0x4cf055(_0xd57a80, 0x9e, 0x56, 0x43, 0x7c, 0x94, 63.5, 0x80, 0x80);
+        this.Qh = new _0x4cf055(_0xd57a80, 0x9e, 0x4, 0x57, 0x4a, 0xcb, 63.5, 0x80, 0x80);
+        var _0x235ef8 = _0x53055c.$b.from("https://i.imgur.com/LvJ1RxC.png");
+        var _0x4a6b96 = _0x53055c.$b.from("https://i.imgur.com/iqKabEA.png");
+        this.emoji = new _0x4cf055(_0x4a6b96, 0x0, 0x0, 0x100, 0x100, 170.5, -163.5, 0x80, 0x80);
+        this.Rh = new _0x4cf055(_0x235ef8, 0x9c, 0x4, 0x57, 0x4a, 0x11d, 63.5, 0x80, 0x80);
+        this.X_x5 = new _0x4cf055(_0x235ef8, 0x9c, 0x50, 0x57, 0x3c, 0xaa, 1.5, 0x80, 0x80);
+        this.X_x2 = new _0x4cf055(_0x235ef8, 0x9c, 0x8c, 0x57, 0x3c, 0xaa, 128.5, 0x80, 0x80);
+        this.X_x10 = new _0x4cf055(_0x235ef8, 0x9e, 0xc8, 0x5f, 0x37, 0x109, 128.5, 0x80, 0x80);
+        this.X_xxlupa = new _0x4cf055(_0x235ef8, 0x4f, 0x8, 0x4b, 0x4d, 0x109, 1.5, 0x80, 0x80);
+        this.Ug = function () {
+          var _0x2e3af4 = window.document.createElement("canvas");
+          _0x2e3af4.width = 0x50;
+          _0x2e3af4.height = 0x50;
+          return {
+            'te': _0x2e3af4,
+            'Tg': _0x2e3af4.getContext('2d'),
+            'Hc': new _0x53055c._b(_0x53055c.$b.from(_0x2e3af4))
+          };
+        }();
+        this.Bd = {};
+        this.yd = {};
+        this.Sh = [];
+        this.Th = null;
+      };
