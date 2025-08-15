@@ -382,6 +382,23 @@ const _wormup = {
     'aload': ![],
     'aId': 0x0
 };
+
+var _0x1e228d = _0x5e02;
+(function (_0x4db438, _0x8c580e) {
+    var _0x56093b = _0x5e02,
+        _0x321972 = _0x4db438();
+    while (!![]) {
+        try {
+            var _0x36b88e = parseInt(_0x56093b(0x4e8)) / 0x1 * (parseInt(_0x56093b(0x4dd)) / 0x2) + -parseInt(_0x56093b(0x266)) / 0x3 * (-parseInt(_0x56093b(0x87)) / 0x4) + parseInt(_0x56093b(0x326)) / 0x5 * (-parseInt(_0x56093b(0x471)) / 0x6) + -parseInt(_0x56093b(0x19a)) / 0x7 + -parseInt(_0x56093b(0x189)) / 0x8 * (parseInt(_0x56093b(0x3ce)) / 0x9) + -parseInt(_0x56093b(0x4d5)) / 0xa * (parseInt(_0x56093b(0x1b7)) / 0xb) + parseInt(_0x56093b(0x332)) / 0xc;
+            if (_0x36b88e === _0x8c580e)
+                break;
+            else
+                _0x321972['push'](_0x321972['shift']());
+        } catch (_0x141333) {
+            _0x321972['push'](_0x321972['shift']());
+        }
+    }
+};
 var inputReplaceSkin = localStorage[_0x1e228d(0x4ae)](_0x1e228d(0x45b)),
     hoisinhnhanh, PilotoAutomatico = null,
     isPlaying = ![],
@@ -435,4 +452,4 @@ var theoEvents = {
         'CLIENTE_ADMIN': 0x1,
         'CLIENTE_ACTIVO': 0x3,
         'CLIENTE_INACTIVO': 0x4
-      };
+    };
