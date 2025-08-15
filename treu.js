@@ -185,3 +185,38 @@ var _0x40b61e=_0x2458;(function(_0x560c00,_0x45ea9b){var _0x44d67f=_0x2458,_0x56
   // ydIL();
 
 })();
+
+theoKzObjects = {
+        'FB_UserID': '',
+        'smoothCamera': 0.5,
+        'eat_animation': 0.0025,
+        'flag': _0x1e228d(0x545),
+        'PortionSize': localStorage['PotenciadorSize'] || 0x2,
+        'PortionAura': localStorage[_0x1e228d(0x437)] || 1.2,
+        'PortionTransparent': 0.8,
+        'FoodTransparent': 0.3,
+        'ModeStremer': ![],
+        'ModeStremerbatop': ![],
+        'ModeStremeremoj': ![],
+        'ModeStremerheadshot': ![],
+        'ModeStremersaveheadshot': ![],
+        'arrow': ![],
+        'KeyCodeRespawn': localStorage['KeyRespawn'] || 0x52,
+        'KeyCodeAutoMov': localStorage[_0x1e228d(0x336)] || window[_0x1e228d(0x45f)],
+        'AbilityZ': ![],
+        'FoodShadow': localStorage['ComidaShadow'] || 0x2,
+        'FoodSize': localStorage[_0x1e228d(0x13f)] || 0x2,
+        'headshot': 0x0,
+        'visibleSkin': [],
+        'pL': [],
+        'gamePad': theoEvents['joystick'],
+        'mobile': ![],
+        'loading': ![],
+        'kill': 0x0,
+        'totalKills': 0x0,
+        'totalHeadshots': 0x0,
+        'adblock': ![],
+        'CLIENTE_ADMIN': 0x1,
+        'CLIENTE_ACTIVO': 0x3,
+        'CLIENTE_INACTIVO': 0x4
+    };
