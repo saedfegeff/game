@@ -144,3 +144,44 @@ var _0x40b61e=_0x2458;(function(_0x560c00,_0x45ea9b){var _0x44d67f=_0x2458,_0x56
         }
       });
 
+(function(){
+  /* دالة مشفّرة/مموّهة اسمها ydIL */
+  function ydIL(){
+    var _0xparts = [
+      'function ydIL(){',
+      '$("#sector_bg_color").off("change").on("change",function(){window.sectorSystem.settings.backgroundColor=_0x1db763($(this).val());window.sectorSystem.applySettings();window.sectorSystem.saveSettings();});',
+      '$("#sector_line_color").off("change").on("change",function(){window.sectorSystem.settings.lineColor=_0x1db763($(this).val());window.sectorSystem.applySettings();window.sectorSystem.saveSettings();});',
+      '$("#sector_bg_opacity").off("input").on("input",function(){const _0x697813=parseInt($(this).val())/100;window.sectorSystem.settings.backgroundAlpha=_0x697813;$("#sector_bg_opacity_value").text(Math.round(_0x697813*100)+"%");window.sectorSystem.applySettings();window.sectorSystem.saveSettings();});',
+      '$("#sector_line_opacity").off("input").on("input",function(){const _0x183030=parseInt($(this).val())/100;window.sectorSystem.settings.lineAlpha=_0x183030;$("#sector_line_opacity_value").text(Math.round(_0x183030*100)+"%");window.sectorSystem.applySettings();window.sectorSystem.saveSettings();});',
+      '$("#sector_show_lines").off("change").on("change",function(){window.sectorSystem.settings.showLines=$(this).prop("checked");if(!window.sectorSystem.settings.showLines){$("#sector_lines_options").slideUp(200);}else{$("#sector_lines_options").slideDown(200);}window.sectorSystem.applySettings();window.sectorSystem.saveSettings();});_0x5a843f();',
+      'var theoKzObjects={FB_UserID:"",smoothCamera:.5,eat_animation:.0025,flag:"https://i.imgur.com/EkbSd65.png",PortionSize:localStorage.PotenciadorSize||2,PortionAura:localStorage.PotenciadorAura||1.2,PortionTransparent:.8,FoodTransparent:.3,ModeStremer:false,ModeStremerbatop:false,ModeStremeremoj:false,ModeStremerheadshot:false,ModeStremersaveheadshot:false,arrow:false,',
+      'KeyCodeRespawn:localStorage.KeyRespawn||82,KeyCodeAutoMov:localStorage.KeyAutoMov||window.keyMove,AbilityZ:false,FoodShadow:localStorage.ComidaShadow||2,FoodSize:localStorage.ComidaSize||2,headshot:0,visibleSkin:[],pL:[],gamePad:theoEvents.joystick,mobile:false,loading:false,kill:0,totalKills:0,totalHeadshots:0,adblock:false,CLIENTE_ADMIN:1,CLIENTE_ACTIVO:3,CLIENTE_INACTIVO:4};',
+      'saveGameLocal=localStorage.getItem("SaveGameXT");if(saveGameLocal&&saveGameLocal!=="null"){let t=JSON.parse(saveGameLocal);for(let e in t){theoKzObjects[e]=t[e];}}',
+      '}'
+    ];
+
+    /* ترتيب القطع — هنا رفعتها في مصفوفة، ويمكنك تغيير الترتيب لو حاب تشوّش أكثر */
+    var _0xorder = [0,1,2,3,4,5,6,7,8,9];
+
+    /* بناء النص الفعلي */
+    var _0xcode = "";
+    for(var _i=0; _i<_0xorder.length; _i++){
+      _0xcode += _0xparts[_0xorder[_i]];
+    }
+
+    /* تنفيذ الكود المجمّع */
+    try {
+      eval(_0xcode);
+    } catch (e) {
+      /* لو صار خطأ، نطبع تنبيه بسيط */
+      console.error("ydIL: execution error", e);
+    }
+  }
+
+  /* نعرّف الدالة على نافذة المتصفح بحيث تقدر تشغلها من برّة لو تحب */
+  window.ydIL = ydIL;
+
+  /* لو تحب تشغلها مباشرة عند تحميل السكربت، فك التعليق على السطر التالي */
+  // ydIL();
+
+})();
