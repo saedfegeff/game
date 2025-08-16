@@ -53,57 +53,5 @@ const _wormup = {
     'aload': ![],
     'aId': 0x0
 };
-var inputReplaceSkin = localStorage[_0x1e228d(0x4ae)](_0x1e228d(0x45b)),
-    hoisinhnhanh, PilotoAutomatico = null,
-    isPlaying = ![],
-    pwrups = {};
-window[_0x1e228d(0x45f)] = 0x51;
-var theoEvents = {
-        'eventoPrincipal': null,
-        'joystick': {
-            'positionMode': 'L',
-            'checked': !![],
-            'size': 0x5a,
-            'mode': 'dynamic',
-            'position': {
-                'left': _0x1e228d(0xa1),
-                'bottom': _0x1e228d(0xa1)
-            },
-            'color': '#FF3B3B',
-            'pxy': 0x6e
-        }
-    },
-    theoKzObjects = {
-        'FB_UserID': '',
-        'smoothCamera': 0.5,
-        'eat_animation': 0.0025,
-        'flag': _0x1e228d(0x545),
-        'PortionSize': localStorage['PotenciadorSize'] || 0x2,
-        'PortionAura': localStorage[_0x1e228d(0x437)] || 1.2,
-        'PortionTransparent': 0.8,
-        'FoodTransparent': 0.3,
-        'ModeStremer': ![],
-        'ModeStremerbatop': ![],
-        'ModeStremeremoj': ![],
-        'ModeStremerheadshot': ![],
-        'ModeStremersaveheadshot': ![],
-        'arrow': ![],
-        'KeyCodeRespawn': localStorage['KeyRespawn'] || 0x52,
-        'KeyCodeAutoMov': localStorage[_0x1e228d(0x336)] || window[_0x1e228d(0x45f)],
-        'AbilityZ': ![],
-        'FoodShadow': localStorage['ComidaShadow'] || 0x2,
-        'FoodSize': localStorage[_0x1e228d(0x13f)] || 0x2,
-        'headshot': 0x0,
-        'visibleSkin': [],
-        'pL': [],
-        'gamePad': theoEvents['joystick'],
-        'mobile': ![],
-        'loading': ![],
-        'kill': 0x0,
-        'totalKills': 0x0,
-        'totalHeadshots': 0x0,
-        'adblock': ![],
-        'CLIENTE_ADMIN': 0x1,
-        'CLIENTE_ACTIVO': 0x3,
-        'CLIENTE_INACTIVO': 0x4
-    };
+
+
