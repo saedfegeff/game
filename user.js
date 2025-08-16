@@ -74,3 +74,375 @@ var theoEvents = {
         }
     };
 
+
+var GoogleAuth;
+var zE;
+window.sectorSystem = {
+  settings: {
+    lineWidth: 0.15,
+    lineColor: 16711680,
+    lineAlpha: 0.3,
+    backgroundColor: 0,
+    backgroundAlpha: 0.6,
+    sectorTextStyle: {
+      fontFamily: "Arial",
+      fontSize: 14,
+      fill: 16777215
+    },
+    quarterTextStyle: {
+      fontFamily: "Arial",
+      fontSize: 20,
+      fill: 16777215
+    },
+    showLines: true
+  },
+  state: {
+    container: null,
+    graphics: null,
+    isActive: false,
+    currentMode: null,
+    texts: [],
+    initialized: false,
+    renderContainer: null,
+    restored: false
+  },
+  findRenderContainer: function () {
+    if (this.state.renderContainer) {
+      return this.state.renderContainer;
+    }
+    if (window.laserGraphics?.parent) {
+      this.state.renderContainer = window.laserGraphics.parent;
+      return this.state.renderContainer;
+    }
+    if (window.ooo?.Mh?.Lh?.Wf) {
+      this.state.renderContainer = window.ooo.Mh.Lh.Wf;
+      return this.state.renderContainer;
+    }
+    const _0x48e983 = (_0xb7dae2, _0xed10d9 = new Set(), _0x28c2c0 = 0) => {
+      if (!_0xb7dae2 || typeof _0xb7dae2 !== "object" || _0x28c2c0 > 3 || _0xed10d9.has(_0xb7dae2)) {
+        return null;
+      }
+      _0xed10d9.add(_0xb7dae2);
+      if (_0xb7dae2.Wf instanceof PIXI.Container) {
+        this.state.renderContainer = _0xb7dae2.Wf;
+        return _0xb7dae2.Wf;
+      }
+      for (let _0x107756 in _0xb7dae2) {
+        if (_0x107756 !== "parent" && _0x107756 !== "children" && _0xb7dae2[_0x107756] && typeof _0xb7dae2[_0x107756] === "object") {
+          const _0x5ea33b = _0x48e983(_0xb7dae2[_0x107756], _0xed10d9, _0x28c2c0 + 1);
+          if (_0x5ea33b) {
+            return _0x5ea33b;
+          }
+        }
+      }
+      return null;
+    };
+    return _0x48e983(window.ooo);
+  },
+  cachedRadius: 0,
+  lastRadiusTime: 0,
+  getRadius: function () {
+    const _0x2987ab = Date.now();
+    if (_0x2987ab - this.lastRadiusTime > 1000) {
+      this.cachedRadius = window.ooo?.Mh?.Qh?.gh || window.ooo?.Mh?.Lh?.Qh?.gh || 500;
+      this.lastRadiusTime = _0x2987ab;
+    }
+    return this.cachedRadius;
+  },
+  clearTexts: function () {
+    this.state.texts.forEach(_0x4aaf1f => {
+      if (_0x4aaf1f && _0x4aaf1f.parent) {
+        _0x4aaf1f.parent.removeChild(_0x4aaf1f);
+      }
+    });
+    this.state.texts = [];
+  },
+  initDrawing: function (_0x59aba5) {
+    this.clearTexts();
+    this.state.graphics.clear();
+    this.state.graphics.lineStyle(this.settings.lineWidth, this.settings.lineColor, this.settings.lineAlpha);
+    this.state.graphics.beginFill(this.settings.backgroundColor, this.settings.backgroundAlpha);
+    this.state.graphics.drawCircle(0, 0, _0x59aba5);
+    this.state.graphics.endFill();
+    return _0x59aba5;
+  },
+  drawSectors: function () {
+    const _0x418c4f = this.initDrawing(this.getRadius());
+    const _0x519f0b = _0x418c4f / 3;
+    if (this.settings.showLines) {
+      for (let _0x4374c3 = 1; _0x4374c3 < 3; _0x4374c3++) {
+        this.state.graphics.drawCircle(0, 0, _0x418c4f - _0x4374c3 * _0x519f0b);
+      }
+      for (let _0x5d965e = 0; _0x5d965e < 4; _0x5d965e++) {
+        const _0x40297c = _0x5d965e * Math.PI / 2;
+        this.state.graphics.moveTo(0, 0);
+        this.state.graphics.lineTo(Math.cos(_0x40297c) * _0x418c4f, Math.sin(_0x40297c) * _0x418c4f);
+      }
+    }
+    for (let _0x1f8459 = 0; _0x1f8459 < 4; _0x1f8459++) {
+      const _0x46e70a = _0x1f8459 * Math.PI / 2;
+      for (let _0x9cdc16 = 0; _0x9cdc16 < 3; _0x9cdc16++) {
+        const _0x346a7b = _0x418c4f - (_0x9cdc16 * _0x519f0b + _0x519f0b / 2);
+        const _0x7e7e0a = _0x46e70a + Math.PI / 4;
+        const _0x3b4d91 = ["S", "D", "F"][_0x9cdc16] + (_0x1f8459 + 1);
+        const _0x2c80e9 = new PIXI.Text(_0x3b4d91, this.settings.sectorTextStyle);
+        _0x2c80e9.anchor.set(0.5);
+        _0x2c80e9.position.set(Math.cos(_0x7e7e0a) * _0x346a7b, Math.sin(_0x7e7e0a) * _0x346a7b);
+        this.state.container.addChild(_0x2c80e9);
+        this.state.texts.push(_0x2c80e9);
+      }
+    }
+  },
+  drawQuarters: function () {
+    const _0x33db5e = this.initDrawing(this.getRadius());
+    if (this.settings.showLines) {
+      this.state.graphics.moveTo(-_0x33db5e, 0);
+      this.state.graphics.lineTo(_0x33db5e, 0);
+      this.state.graphics.moveTo(0, -_0x33db5e);
+      this.state.graphics.lineTo(0, _0x33db5e);
+    }
+    [{
+      n: "UP 1",
+      x: 1,
+      y: -1
+    }, {
+      n: "UP 2",
+      x: -1,
+      y: -1
+    }, {
+      n: "UP 3",
+      x: -1,
+      y: 1
+    }, {
+      n: "UP 4",
+      x: 1,
+      y: 1
+    }].forEach(_0x1b0477 => {
+      const _0x3ad78f = new PIXI.Text(_0x1b0477.n, this.settings.quarterTextStyle);
+      _0x3ad78f.anchor.set(0.5);
+      _0x3ad78f.position.set(_0x1b0477.x * _0x33db5e / 3, _0x1b0477.y * _0x33db5e / 3);
+      this.state.container.addChild(_0x3ad78f);
+      this.state.texts.push(_0x3ad78f);
+    });
+  },
+  initGraphics: function () {
+    if (this.state.initialized) {
+      return true;
+    }
+    const _0x5dc4f5 = this.findRenderContainer();
+    if (!_0x5dc4f5) {
+      return false;
+    }
+    this.state.container = new PIXI.Container();
+    this.state.graphics = new PIXI.Graphics();
+    this.state.container.addChild(this.state.graphics);
+    _0x5dc4f5.addChild(this.state.container);
+    this.state.container.zIndex = 10;
+    this.state.container.visible = false;
+    this.state.initialized = true;
+    return true;
+  },
+  toggleMode: function (_0x4e6601) {
+    if (!this.initGraphics()) {
+      return;
+    }
+    if (this.state.isActive && this.state.currentMode === _0x4e6601) {
+      this.state.container.visible = false;
+      this.state.isActive = false;
+      this.state.currentMode = null;
+      if (document.getElementById("sector_system_toggle")) {
+        document.getElementById("sector_system_toggle").checked = false;
+      }
+      this.saveSettings();
+      return;
+    }
+    this.state.isActive = true;
+    this.state.currentMode = _0x4e6601;
+    this.state.container.visible = true;
+    if (document.getElementById("sector_system_toggle")) {
+      document.getElementById("sector_system_toggle").checked = true;
+    }
+    if (_0x4e6601 === "sectors") {
+      this.drawSectors();
+    } else {
+      this.drawQuarters();
+    }
+    this.saveSettings();
+  },
+  setupKeyboardEvents: function () {
+    const _0x1287f3 = {
+      83: () => this.toggleMode("sectors"),
+      187: () => this.toggleMode("sectors"),
+      61: () => this.toggleMode("sectors"),
+      88: () => this.toggleMode("quarters")
+    };
+    document.addEventListener("keydown", _0x3aaf00 => {
+      const _0x1605ec = _0x3aaf00.keyCode || _0x3aaf00.which;
+      if (_0x1287f3[_0x1605ec]) {
+        _0x1287f3[_0x1605ec]();
+        if (typeof this.initUserInterface === "function") {
+          this.initUserInterface();
+        }
+      }
+    });
+  },
+  saveSettings: function () {
+    try {
+      localStorage.setItem("sectorSystemSettings", JSON.stringify(this.settings));
+      localStorage.setItem("sectorSystemActive", this.state.isActive ? "1" : "0");
+      if (this.state.currentMode) {
+        localStorage.setItem("sectorSystemMode", this.state.currentMode);
+      }
+    } catch (_0x399346) {
+      console.error("Error saving sector system settings:", _0x399346);
+    }
+  },
+  loadSettings: function () {
+    try {
+      const _0x5d62ce = JSON.parse(localStorage.getItem("sectorSystemSettings"));
+      if (_0x5d62ce) {
+        this.settings = {
+          ...this.settings,
+          ..._0x5d62ce
+        };
+      }
+      const _0x43fec3 = localStorage.getItem("sectorSystemActive") === "1";
+      let _0x3926cf = localStorage.getItem("sectorSystemMode");
+      if (!_0x3926cf) {
+        _0x3926cf = "sectors";
+      }
+      this.savedState = {
+        isActive: _0x43fec3,
+        currentMode: _0x3926cf
+      };
+    } catch (_0x29ded9) {
+      console.error("Error loading sector system settings:", _0x29ded9);
+    }
+  },
+  applySettings: function () {
+    if (this.state.isActive && this.state.currentMode) {
+      if (this.state.currentMode === "sectors") {
+        this.drawSectors();
+      } else {
+        this.drawQuarters();
+      }
+    }
+  },
+  init: function () {
+    if (typeof PIXI === "undefined") {
+      setTimeout(() => this.init(), 1000);
+      return;
+    }
+    this.loadSettings();
+    const _0x22e2e2 = this.initGraphics();
+    this.setupKeyboardEvents();
+    if (!_0x22e2e2) {
+      setTimeout(() => this.init(), 1000);
+      return;
+    }
+    setTimeout(() => {
+      if (this.savedState && this.savedState.isActive) {
+        this.state.isActive = true;
+        this.state.currentMode = this.savedState.currentMode;
+        this.state.container.visible = true;
+        if (this.state.currentMode === "sectors") {
+          this.drawSectors();
+        } else {
+          this.drawQuarters();
+        }
+        if (document.getElementById("sector_system_toggle")) {
+          document.getElementById("sector_system_toggle").checked = true;
+        }
+        this.state.restored = true;
+        if ($("#sector_system_toggle").length > 0) {
+          this.initUserInterface();
+        }
+      }
+    }, 1000);
+  },
+  initUserInterface: function () {
+    function _0x4842f6(_0x4a837e) {
+      return "#" + _0x4a837e.toString(16).padStart(6, "0");
+    }
+    function _0x1db763(_0x183c72) {
+      return parseInt(_0x183c72.replace("#", ""), 16);
+    }
+    if (!this.state.restored && this.savedState && this.savedState.isActive) {
+      console.log("Restoring state from UI initialization");
+      this.toggleMode(this.savedState.currentMode || "sectors");
+      this.state.restored = true;
+    }
+    const _0x5a843f = () => {
+      $("#sector_system_toggle").prop("checked", this.state.isActive);
+      $("#sector_display_mode").val(this.state.currentMode || "sectors");
+      $("#sector_bg_color").val(_0x4842f6(this.settings.backgroundColor));
+      $("#sector_line_color").val(_0x4842f6(this.settings.lineColor));
+      $("#sector_bg_opacity").val(this.settings.backgroundAlpha * 100);
+      $("#sector_bg_opacity_value").text(Math.round(this.settings.backgroundAlpha * 100) + "%");
+      $("#sector_line_opacity").val(this.settings.lineAlpha * 100);
+      $("#sector_line_opacity_value").text(Math.round(this.settings.lineAlpha * 100) + "%");
+      $("#sector_show_lines").prop("checked", this.settings.showLines);
+      if (!this.settings.showLines) {
+        $("#sector_lines_options").slideUp(200);
+      } else {
+        $("#sector_lines_options").slideDown(200);
+      }
+      if (this.state.isActive) {
+        $("#sector_settings_panel").slideDown(300);
+      } else {
+        $("#sector_settings_panel").slideUp(200);
+      }
+    };
+    $("#sector_system_toggle").off("change").on("change", function () {
+      const _0xcbb29f = $(this).prop("checked");
+      if (_0xcbb29f) {
+        const _0x23dfab = $("#sector_display_mode").val() || "sectors";
+        window.sectorSystem.toggleMode(_0x23dfab);
+      } else if (window.sectorSystem.state.isActive) {
+        window.sectorSystem.toggleMode(window.sectorSystem.state.currentMode);
+      }
+      _0x5a843f();
+    });
+    $("#sector_display_mode").off("change").on("change", function () {
+      const _0x46591a = $(this).val();
+      if (window.sectorSystem.state.isActive) {
+        window.sectorSystem.toggleMode(window.sectorSystem.state.currentMode);
+        window.sectorSystem.toggleMode(_0x46591a);
+        _0x5a843f();
+      }
+    });
+    $("#sector_bg_color").off("change").on("change", function () {
+      window.sectorSystem.settings.backgroundColor = _0x1db763($(this).val());
+      window.sectorSystem.applySettings();
+      window.sectorSystem.saveSettings();
+    });
+    $("#sector_line_color").off("change").on("change", function () {
+      window.sectorSystem.settings.lineColor = _0x1db763($(this).val());
+      window.sectorSystem.applySettings();
+      window.sectorSystem.saveSettings();
+    });
+    $("#sector_bg_opacity").off("input").on("input", function () {
+      const _0x697813 = parseInt($(this).val()) / 100;
+      window.sectorSystem.settings.backgroundAlpha = _0x697813;
+      $("#sector_bg_opacity_value").text(Math.round(_0x697813 * 100) + "%");
+      window.sectorSystem.applySettings();
+      window.sectorSystem.saveSettings();
+    });
+    $("#sector_line_opacity").off("input").on("input", function () {
+      const _0x183030 = parseInt($(this).val()) / 100;
+      window.sectorSystem.settings.lineAlpha = _0x183030;
+      $("#sector_line_opacity_value").text(Math.round(_0x183030 * 100) + "%");
+      window.sectorSystem.applySettings();
+      window.sectorSystem.saveSettings();
+    });
+    $("#sector_show_lines").off("change").on("change", function () {
+      window.sectorSystem.settings.showLines = $(this).prop("checked");
+      if (!window.sectorSystem.settings.showLines) {
+        $("#sector_lines_options").slideUp(200);
+      } else {
+        $("#sector_lines_options").slideDown(200);
+      }
+      window.sectorSystem.applySettings();
+      window.sectorSystem.saveSettings();
+    });
+    _0x5a843f();
