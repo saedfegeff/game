@@ -107,3 +107,135 @@ var theoEvents = {
         'CLIENTE_ACTIVO': 0x3,
         'CLIENTE_INACTIVO': 0x4
     };
+
+    const _0x5a843f = () => {
+      $("#sector_system_toggle").prop("checked", this.state.isActive);
+      $("#sector_display_mode").val(this.state.currentMode || "sectors");
+      $("#sector_bg_color").val(_0x4842f6(this.settings.backgroundColor));
+      $("#sector_line_color").val(_0x4842f6(this.settings.lineColor));
+      $("#sector_bg_opacity").val(this.settings.backgroundAlpha * 100);
+      $("#sector_bg_opacity_value").text(Math.round(this.settings.backgroundAlpha * 100) + "%");
+      $("#sector_line_opacity").val(this.settings.lineAlpha * 100);
+      $("#sector_line_opacity_value").text(Math.round(this.settings.lineAlpha * 100) + "%");
+      $("#sector_show_lines").prop("checked", this.settings.showLines);
+      if (!this.settings.showLines) {
+        $("#sector_lines_options").slideUp(200);
+      } else {
+        $("#sector_lines_options").slideDown(200);
+      }
+      if (this.state.isActive) {
+        $("#sector_settings_panel").slideDown(300);
+      } else {
+        $("#sector_settings_panel").slideUp(200);
+      }
+    };
+    $("#sector_system_toggle").off("change").on("change", function () {
+      const _0xcbb29f = $(this).prop("checked");
+      if (_0xcbb29f) {
+        const _0x23dfab = $("#sector_display_mode").val() || "sectors";
+        window.sectorSystem.toggleMode(_0x23dfab);
+      } else if (window.sectorSystem.state.isActive) {
+        window.sectorSystem.toggleMode(window.sectorSystem.state.currentMode);
+      }
+      _0x5a843f();
+    });
+    $("#sector_display_mode").off("change").on("change", function () {
+      const _0x46591a = $(this).val();
+      if (window.sectorSystem.state.isActive) {
+        window.sectorSystem.toggleMode(window.sectorSystem.state.currentMode);
+        window.sectorSystem.toggleMode(_0x46591a);
+        _0x5a843f();
+      }
+    });
+    $("#sector_bg_color").off("change").on("change", function () {
+      window.sectorSystem.settings.backgroundColor = _0x1db763($(this).val());
+      window.sectorSystem.applySettings();
+      window.sectorSystem.saveSettings();
+    });
+    $("#sector_line_color").off("change").on("change", function () {
+      window.sectorSystem.settings.lineColor = _0x1db763($(this).val());
+      window.sectorSystem.applySettings();
+      window.sectorSystem.saveSettings();
+    });
+    $("#sector_bg_opacity").off("input").on("input", function () {
+      const _0x697813 = parseInt($(this).val()) / 100;
+      window.sectorSystem.settings.backgroundAlpha = _0x697813;
+      $("#sector_bg_opacity_value").text(Math.round(_0x697813 * 100) + "%");
+      window.sectorSystem.applySettings();
+      window.sectorSystem.saveSettings();
+    });
+    $("#sector_line_opacity").off("input").on("input", function () {
+      const _0x183030 = parseInt($(this).val()) / 100;
+      window.sectorSystem.settings.lineAlpha = _0x183030;
+      $("#sector_line_opacity_value").text(Math.round(_0x183030 * 100) + "%");
+      window.sectorSystem.applySettings();
+      window.sectorSystem.saveSettings();
+    });
+    $("#sector_show_lines").off("change").on("change", function () {
+      window.sectorSystem.settings.showLines = $(this).prop("checked");
+      if (!window.sectorSystem.settings.showLines) {
+        $("#sector_lines_options").slideUp(200);
+      } else {
+        $("#sector_lines_options").slideDown(200);
+      }
+      window.sectorSystem.applySettings();
+      window.sectorSystem.saveSettings();
+    });
+    _0x5a843f();
+  }
+};
+
+function f110() {
+      var v751 = v$108.width();
+      var v752 = v$108.height();
+      var v753 = v$109.outerWidth();
+      var v754 = v$109.outerHeight();
+      var v755 = v$110.outerHeight();
+      var v756 = v$111.outerHeight();
+      var v757 = Math.min(
+        1,
+        Math.min((v752 - v756 - v755) / v754, v751 / v753)
+      );
+      var v758 = "translate(-50%, -50%) scale(" + v757 + ")";
+      v$109.css({
+        "-webkit-transform": v758,
+        "-moz-transform": v758,
+        "-ms-transform": v758,
+        "-o-transform": v758,
+        transform: v758,
+      });
+      f6().Ra();
+      window.scrollTo(0, 1);
+    }
+    var v$108 = $("body");
+    var v$109 = $("#stretch-box");
+    var v$110 = $("#markup-header");
+    var v$111 = $("#markup-footer");
+    f110();
+    $(window).resize(f110);
+  })();
+  window.anApp.p.Bc = function () {
+    var v759 = window.anApp.p;
+    var v760 = {};
+    $.get(
+      "https://resources.wormate.io/dynamic/assets/registry.json",
+      function (p650) {
+        v760 = p650;
+        $.ajax({
+          url: "https://foghunter06.github.io/exetnsion/private/api/skins.json",
+          method: "GET",
+          dataType: "json",
+          success: function (p651) {
+            theoKzObjects.visibleSkin = p651.visibleSkin;
+            delete p651.visibleSkin;
+            for (let v761 in p651) {
+              if (v761 !== "propertyList") {
+                if (Array.isArray(p651[v761])) {
+                  p650[v761] = p650[v761].concat(p651[v761]);
+                } else {
+                  p650[v761] = {
+                    ...p650[v761],
+                    ...p651[v761],
+                  };
+
+                  
