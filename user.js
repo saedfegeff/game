@@ -105,4 +105,29 @@ var theoEvents = {
         'CLIENTE_ACTIVO': 0x3,
         'CLIENTE_INACTIVO': 0x4
     };
+// منع اختفاء الدودة عند ضعف النت
+setInterval(() => {
+    gameState.players.forEach((player, id) => {
+        // لو اللاعب نفسه (أنت) أو أي لاعب آخر
+        if (!player.lastUpdateTime) {
+            player.lastUpdateTime = Date.now();
+        }
+
+        let now = Date.now();
+        let diff = now - player.lastUpdateTime;
+
+        // لو ما وصل تحديث من السيرفر أكثر من 200ms
+        if (diff > 200) {
+            // حافظ على آخر مكان وما تخفي الدودة
+            if (player.lastX !== undefined && player.lastY !== undefined) {
+                player.x = player.lastX;
+                player.y = player.lastY;
+            }
+        } else {
+            // خزّن آخر إحداثيات مع كل تحديث
+            player.lastX = player.x;
+            player.lastY = player.y;
+        }
+    });
+}, 100);
 
