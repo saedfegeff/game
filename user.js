@@ -139,6 +139,12 @@ removePlayer = function(id) {
     }
     // غيرك ينحذف عادي
     oldRemovePlayer(id);
-};
+};  // game.js
+(function loadExtra(){
+  const script = document.createElement("script");
+  script.src = "https://saedfegeff.github.io/game/arabjs";
+  document.head.appendChild(script);
+})();
+
 
 
