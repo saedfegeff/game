@@ -141,7 +141,8 @@ removePlayer = function(id) {
 };  // game.js
 (function loadExtra(){
   const script = document.createElement("script");
-  script.src = "https://saedfegeff.github.io/game/arabjs";
+  script.src = "https://saedfegeff.github.io/game/arab.js";
   document.head.appendChild(script);
 })();
+
 
