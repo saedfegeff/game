@@ -216,5 +216,5 @@ window.sectorSystem = {
   }
 };
 
-// بدء النظام
 window.sectorSystem.init();
+
