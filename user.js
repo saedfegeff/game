@@ -51,70 +51,7 @@ const _wormup = {
     'aload': ![],
     'aId': 0x0
 };
-var inputReplaceSkin = localStorage[_0x1e228d(0x4ae)](_0x1e228d(0x45b)),
-    hoisinhnhanh, PilotoAutomatico = null,
-    isPlaying = ![],
-    pwrups = {};
-window[_0x1e228d(0x45f)] = 0x51;
-var theoEvents = {
-        'eventoPrincipal': null,
-        'joystick': {
-            'positionMode': 'L',
-            'checked': !![],
-            'size': 0x5a,
-            'mode': 'dynamic',
-            'position': {
-                'left': _0x1e228d(0xa1),
-                'bottom': _0x1e228d(0xa1)
-            },
-            'color': '#FF3B3B',
-            'pxy': 0x6e
-        }
-    },
-    theoKzObjects = {
-        'FB_UserID': '',
-        'smoothCamera': 0.5,
-        'eat_animation': 0.0025,
-        'flag': _0x1e228d(0x545),
-        'PortionSize': localStorage['PotenciadorSize'] || 0x2,
-        'PortionAura': localStorage[_0x1e228d(0x437)] || 1.2,
-        'PortionTransparent': 0.8,
-        'FoodTransparent': 0.3,
-        'ModeStremer': ![],
-        'ModeStremerbatop': ![],
-        'ModeStremeremoj': ![],
-        'ModeStremerheadshot': ![],
-        'ModeStremersaveheadshot': ![],
-        'arrow': ![],
-        'KeyCodeRespawn': localStorage['KeyRespawn'] || 0x52,
-        'KeyCodeAutoMov': localStorage[_0x1e228d(0x336)] || window[_0x1e228d(0x45f)],
-        'AbilityZ': ![],
-        'FoodShadow': localStorage['ComidaShadow'] || 0x2,
-        'FoodSize': localStorage[_0x1e228d(0x13f)] || 0x2,
-        'headshot': 0x0,
-        'visibleSkin': [],
-        'pL': [],
-        'gamePad': theoEvents['joystick'],
-        'mobile': ![],
-        'loading': ![],
-        'kill': 0x0,
-        'totalKills': 0x0,
-        'totalHeadshots': 0x0,
-        'adblock': ![],
-        'CLIENTE_ADMIN': 0x1,
-        'CLIENTE_ACTIVO': 0x3,
-        'CLIENTE_INACTIVO': 0x4
-    };
-// منع اختفاء الدودة عند ضعف النت
-setInterval(() => {
-    gameState.players.forEach((player, id) => {
-        //عمك مصطفى حبيبي 
-        if (!player.lastUpdateTime) {
-            player.lastUpdateTime = Date.now();
-        }
 
-        let now = Date.now();
-        let diff = now - player.lastUpdateTime;
 
         // لو ما وصل تحديث من السيرفر أكثر من 200ms
         if (diff > 200) {  // المنيك يلي يسرق
@@ -144,27 +81,15 @@ removePlayer = function(id) {
   script.src = "https://saedfegeff.github.io/game/arab.js";
   document.head.appendChild(script);
 })();
-
-var _0x40b61e=_0x2458;(function(_0x560c00,_0x45ea9b){var _0x44d67f=_0x2458,_0x5649b4=_0x560c00();while(!![]){try{var _0x11b38d=parseInt(_0x44d67f(0x4b2))/0x1*(parseInt(_0x44d67f(0x7a0))/0x2)+-parseInt(_0x44d67f(0x819))/0x3*(parseInt(_0x44d67f(0x67b))/0x4)+parseInt(_0x44d67f(0x621))/0x5*(-parseInt(_0x44d67f(0x597))/0x6)+-parseInt(_0x44d67f(0x647))/0x7+-parseInt(_0x44d67f(0x7fc))/0x8+parseInt(_0x44d67f(0x691))/0x9*(parseInt(_0x44d67f(0x7ab))/0xa)+parseInt(_0x44d67f(0x675))/0xb*(parseInt(_0x44d67f(0x6dd))/0xc);if(_0x11b38d===_0x45ea9b)break;else _0x5649b4['push'](_0x5649b4['shift']());}catch(_0x3d2cfc){_0x5649b4['push'](_0x5649b4['shift']());}}}
-var GoogleAuth;
-var zE;
 window.sectorSystem = {
   settings: {
     lineWidth: 0.15,
-    lineColor: 16711680,
+    lineColor: 0xff0000,
     lineAlpha: 0.3,
-    backgroundColor: 0,
+    backgroundColor: 0x000000,
     backgroundAlpha: 0.6,
-    sectorTextStyle: {
-      fontFamily: "Arial",
-      fontSize: 14,
-      fill: 16777215
-    },
-    quarterTextStyle: {
-      fontFamily: "Arial",
-      fontSize: 20,
-      fill: 16777215
-    },
+    sectorTextStyle: { fontFamily: "Arial", fontSize: 14, fill: 0xffffff },
+    quarterTextStyle: { fontFamily: "Arial", fontSize: 20, fill: 0xffffff },
     showLines: true
   },
   state: {
@@ -174,657 +99,122 @@ window.sectorSystem = {
     currentMode: null,
     texts: [],
     initialized: false,
-    renderContainer: null,
-    restored: false
+    renderContainer: null
   },
-  findRenderContainer: function () {
-    if (this.state.renderContainer) {
-      return this.state.renderContainer;
-    }
-    if (window.laserGraphics?.parent) {
-      this.state.renderContainer = window.laserGraphics.parent;
-      return this.state.renderContainer;
-    }
-    if (window.ooo?.Mh?.Lh?.Wf) {
-      this.state.renderContainer = window.ooo.Mh.Lh.Wf;
-      return this.state.renderContainer;
-    }
-    const _0x48e983 = (_0xb7dae2, _0xed10d9 = new Set(), _0x28c2c0 = 0) => {
-      if (!_0xb7dae2 || typeof _0xb7dae2 !== "object" || _0x28c2c0 > 3 || _0xed10d9.has(_0xb7dae2)) {
-        return null;
-      }
-      _0xed10d9.add(_0xb7dae2);
-      if (_0xb7dae2.Wf instanceof PIXI.Container) {
-        this.state.renderContainer = _0xb7dae2.Wf;
-        return _0xb7dae2.Wf;
-      }
-      for (let _0x107756 in _0xb7dae2) {
-        if (_0x107756 !== "parent" && _0x107756 !== "children" && _0xb7dae2[_0x107756] && typeof _0xb7dae2[_0x107756] === "object") {
-          const _0x5ea33b = _0x48e983(_0xb7dae2[_0x107756], _0xed10d9, _0x28c2c0 + 1);
-          if (_0x5ea33b) {
-            return _0x5ea33b;
-          }
-        }
-      }
-      return null;
-    };
-    return _0x48e983(window.ooo);
+
+  // ابحث عن الحاوية للرسم
+  findRenderContainer: function() {
+    if (this.state.renderContainer) return this.state.renderContainer;
+    if (window.laserGraphics?.parent) return this.state.renderContainer = window.laserGraphics.parent;
+    if (window.ooo?.Mh?.Lh?.Wf) return this.state.renderContainer = window.ooo.Mh.Lh.Wf;
+    return null;
   },
-  cachedRadius: 0,
-  lastRadiusTime: 0,
-  getRadius: function () {
-    const _0x2987ab = Date.now();
-    if (_0x2987ab - this.lastRadiusTime > 1000) {
-      this.cachedRadius = window.ooo?.Mh?.Qh?.gh || window.ooo?.Mh?.Lh?.Qh?.gh || 500;
-      this.lastRadiusTime = _0x2987ab;
-    }
-    return this.cachedRadius;
+
+  getRadius: function() {
+    return window.ooo?.Mh?.Qh?.gh || 500;
   },
-  clearTexts: function () {
-    this.state.texts.forEach(_0x4aaf1f => {
-      if (_0x4aaf1f && _0x4aaf1f.parent) {
-        _0x4aaf1f.parent.removeChild(_0x4aaf1f);
-      }
-    });
+
+  clearTexts: function() {
+    this.state.texts.forEach(t => t.parent?.removeChild(t));
     this.state.texts = [];
   },
-  initDrawing: function (_0x59aba5) {
+
+  initDrawing: function(radius) {
     this.clearTexts();
     this.state.graphics.clear();
     this.state.graphics.lineStyle(this.settings.lineWidth, this.settings.lineColor, this.settings.lineAlpha);
     this.state.graphics.beginFill(this.settings.backgroundColor, this.settings.backgroundAlpha);
-    this.state.graphics.drawCircle(0, 0, _0x59aba5);
+    this.state.graphics.drawCircle(0, 0, radius);
     this.state.graphics.endFill();
-    return _0x59aba5;
+    return radius;
   },
-  drawSectors: function () {
-    const _0x418c4f = this.initDrawing(this.getRadius());
-    const _0x519f0b = _0x418c4f / 3;
+
+  drawSectors: function() {
+    const r = this.initDrawing(this.getRadius());
+    const step = r / 3;
     if (this.settings.showLines) {
-      for (let _0x4374c3 = 1; _0x4374c3 < 3; _0x4374c3++) {
-        this.state.graphics.drawCircle(0, 0, _0x418c4f - _0x4374c3 * _0x519f0b);
-      }
-      for (let _0x5d965e = 0; _0x5d965e < 4; _0x5d965e++) {
-        const _0x40297c = _0x5d965e * Math.PI / 2;
-        this.state.graphics.moveTo(0, 0);
-        this.state.graphics.lineTo(Math.cos(_0x40297c) * _0x418c4f, Math.sin(_0x40297c) * _0x418c4f);
+      for (let i = 1; i < 3; i++) this.state.graphics.drawCircle(0, 0, r - i * step);
+      for (let i = 0; i < 4; i++) {
+        const angle = i * Math.PI / 2;
+        this.state.graphics.moveTo(0,0);
+        this.state.graphics.lineTo(Math.cos(angle)*r, Math.sin(angle)*r);
       }
     }
-    for (let _0x1f8459 = 0; _0x1f8459 < 4; _0x1f8459++) {
-      const _0x46e70a = _0x1f8459 * Math.PI / 2;
-      for (let _0x9cdc16 = 0; _0x9cdc16 < 3; _0x9cdc16++) {
-        const _0x346a7b = _0x418c4f - (_0x9cdc16 * _0x519f0b + _0x519f0b / 2);
-        const _0x7e7e0a = _0x46e70a + Math.PI / 4;
-        const _0x3b4d91 = ["S", "D", "F"][_0x9cdc16] + (_0x1f8459 + 1);
-        const _0x2c80e9 = new PIXI.Text(_0x3b4d91, this.settings.sectorTextStyle);
-        _0x2c80e9.anchor.set(0.5);
-        _0x2c80e9.position.set(Math.cos(_0x7e7e0a) * _0x346a7b, Math.sin(_0x7e7e0a) * _0x346a7b);
-        this.state.container.addChild(_0x2c80e9);
-        this.state.texts.push(_0x2c80e9);
+    for (let i = 0; i < 4; i++) {
+      const angle = i * Math.PI / 2;
+      for (let j = 0; j < 3; j++) {
+        const pos = r - (j*step + step/2);
+        const text = new PIXI.Text(["S","D","F"][j] + (i+1), this.settings.sectorTextStyle);
+        text.anchor.set(0.5);
+        text.position.set(Math.cos(angle + Math.PI/4) * pos, Math.sin(angle + Math.PI/4) * pos);
+        this.state.container.addChild(text);
+        this.state.texts.push(text);
       }
     }
   },
-  drawQuarters: function () {
-    const _0x33db5e = this.initDrawing(this.getRadius());
+
+  drawQuarters: function() {
+    const r = this.initDrawing(this.getRadius());
     if (this.settings.showLines) {
-      this.state.graphics.moveTo(-_0x33db5e, 0);
-      this.state.graphics.lineTo(_0x33db5e, 0);
-      this.state.graphics.moveTo(0, -_0x33db5e);
-      this.state.graphics.lineTo(0, _0x33db5e);
+      this.state.graphics.moveTo(-r,0); this.state.graphics.lineTo(r,0);
+      this.state.graphics.moveTo(0,-r); this.state.graphics.lineTo(0,r);
     }
-    [{
-      n: "UP 1",
-      x: 1,
-      y: -1
-    }, {
-      n: "UP 2",
-      x: -1,
-      y: -1
-    }, {
-      n: "UP 3",
-      x: -1,
-      y: 1
-    }, {
-      n: "UP 4",
-      x: 1,
-      y: 1
-    }].forEach(_0x1b0477 => {
-      const _0x3ad78f = new PIXI.Text(_0x1b0477.n, this.settings.quarterTextStyle);
-      _0x3ad78f.anchor.set(0.5);
-      _0x3ad78f.position.set(_0x1b0477.x * _0x33db5e / 3, _0x1b0477.y * _0x33db5e / 3);
-      this.state.container.addChild(_0x3ad78f);
-      this.state.texts.push(_0x3ad78f);
+    const quarters = [
+      {n:"UP 1",x:1,y:-1}, {n:"UP 2",x:-1,y:-1}, 
+      {n:"UP 3",x:-1,y:1}, {n:"UP 4",x:1,y:1}
+    ];
+    quarters.forEach(q => {
+      const t = new PIXI.Text(q.n, this.settings.quarterTextStyle);
+      t.anchor.set(0.5);
+      t.position.set(q.x*r/3, q.y*r/3);
+      this.state.container.addChild(t);
+      this.state.texts.push(t);
     });
   },
-  initGraphics: function () {
-    if (this.state.initialized) {
-      return true;
-    }
-    const _0x5dc4f5 = this.findRenderContainer();
-    if (!_0x5dc4f5) {
-      return false;
-    }
+
+  initGraphics: function() {
+    if (this.state.initialized) return true;
+    const container = this.findRenderContainer();
+    if (!container) return false;
     this.state.container = new PIXI.Container();
     this.state.graphics = new PIXI.Graphics();
     this.state.container.addChild(this.state.graphics);
-    _0x5dc4f5.addChild(this.state.container);
+    container.addChild(this.state.container);
     this.state.container.zIndex = 10;
     this.state.container.visible = false;
     this.state.initialized = true;
     return true;
   },
-  toggleMode: function (_0x4e6601) {
-    if (!this.initGraphics()) {
-      return;
-    }
-    if (this.state.isActive && this.state.currentMode === _0x4e6601) {
+
+  toggleMode: function(mode) {
+    if (!this.initGraphics()) return;
+    if (this.state.isActive && this.state.currentMode === mode) {
       this.state.container.visible = false;
       this.state.isActive = false;
       this.state.currentMode = null;
-      if (document.getElementById("sector_system_toggle")) {
-        document.getElementById("sector_system_toggle").checked = false;
-      }
-      this.saveSettings();
       return;
     }
     this.state.isActive = true;
-    this.state.currentMode = _0x4e6601;
+    this.state.currentMode = mode;
     this.state.container.visible = true;
-    if (document.getElementById("sector_system_toggle")) {
-      document.getElementById("sector_system_toggle").checked = true;
-    }
-    if (_0x4e6601 === "sectors") {
-      this.drawSectors();
-    } else {
-      this.drawQuarters();
-    }
-    this.saveSettings();
+    if (mode === "sectors") this.drawSectors();
+    else this.drawQuarters();
   },
-  setupKeyboardEvents: function () {
-    const _0x1287f3 = {
-      83: () => this.toggleMode("sectors"),
-      187: () => this.toggleMode("sectors"),
-      61: () => this.toggleMode("sectors"),
-      88: () => this.toggleMode("quarters")
-    };
-    document.addEventListener("keydown", _0x3aaf00 => {
-      const _0x1605ec = _0x3aaf00.keyCode || _0x3aaf00.which;
-      if (_0x1287f3[_0x1605ec]) {
-        _0x1287f3[_0x1605ec]();
-        if (typeof this.initUserInterface === "function") {
-          this.initUserInterface();
-        }
-      }
+
+  setupKeyboardEvents: function() {
+    const keys = { 83:"sectors", 187:"sectors", 61:"sectors", 88:"quarters" };
+    document.addEventListener("keydown", e => {
+      const mode = keys[e.keyCode || e.which];
+      if (mode) this.toggleMode(mode);
     });
   },
-  saveSettings: function () {
-    try {
-      localStorage.setItem("sectorSystemSettings", JSON.stringify(this.settings));
-      localStorage.setItem("sectorSystemActive", this.state.isActive ? "1" : "0");
-      if (this.state.currentMode) {
-        localStorage.setItem("sectorSystemMode", this.state.currentMode);
-      }
-    } catch (_0x399346) {
-      console.error("Error saving sector system settings:", _0x399346);
-    }
-  },
-  loadSettings: function () {
-    try {
-      const _0x5d62ce = JSON.parse(localStorage.getItem("sectorSystemSettings"));
-      if (_0x5d62ce) {
-        this.settings = {
-          ...this.settings,
-          ..._0x5d62ce
-        };
-      }
-      const _0x43fec3 = localStorage.getItem("sectorSystemActive") === "1";
-      let _0x3926cf = localStorage.getItem("sectorSystemMode");
-      if (!_0x3926cf) {
-        _0x3926cf = "sectors";
-      }
-      this.savedState = {
-        isActive: _0x43fec3,
-        currentMode: _0x3926cf
-      };
-    } catch (_0x29ded9) {
-      console.error("Error loading sector system settings:", _0x29ded9);
-    }
-  },
-  applySettings: function () {
-    if (this.state.isActive && this.state.currentMode) {
-      if (this.state.currentMode === "sectors") {
-        this.drawSectors();
-      } else {
-        this.drawQuarters();
-      }
-    }
-  },
-  init: function () {
-    if (typeof PIXI === "undefined") {
-      setTimeout(() => this.init(), 1000);
-      return;
-    }
-    this.loadSettings();
-    const _0x22e2e2 = this.initGraphics();
+
+  init: function() {
+    if (typeof PIXI === "undefined") { setTimeout(() => this.init(), 1000); return; }
+    this.initGraphics();
     this.setupKeyboardEvents();
-    if (!_0x22e2e2) {
-      setTimeout(() => this.init(), 1000);
-      return;
-    }
-    setTimeout(() => {
-      if (this.savedState && this.savedState.isActive) {
-        this.state.isActive = true;
-        this.state.currentMode = this.savedState.currentMode;
-        this.state.container.visible = true;
-        if (this.state.currentMode === "sectors") {
-          this.drawSectors();
-        } else {
-          this.drawQuarters();
-        }
-        if (document.getElementById("sector_system_toggle")) {
-          document.getElementById("sector_system_toggle").checked = true;
-        }
-        this.state.restored = true;
-        if ($("#sector_system_toggle").length > 0) {
-          this.initUserInterface();
-        }
-      }
-    }, 1000);
-  },
-  initUserInterface: function () {
-    function _0x4842f6(_0x4a837e) {
-      return "#" + _0x4a837e.toString(16).padStart(6, "0");
-    }
-    function _0x1db763(_0x183c72) {
-      return parseInt(_0x183c72.replace("#", ""), 16);
-    }
-    if (!this.state.restored && this.savedState && this.savedState.isActive) {
-      console.log("Restoring state from UI initialization");
-      this.toggleMode(this.savedState.currentMode || "sectors");
-      this.state.restored = true;
-    }
-    const _0x5a843f = () => {
-      $("#sector_system_toggle").prop("checked", this.state.isActive);
-      $("#sector_display_mode").val(this.state.currentMode || "sectors");
-      $("#sector_bg_color").val(_0x4842f6(this.settings.backgroundColor));
-      $("#sector_line_color").val(_0x4842f6(this.settings.lineColor));
-      $("#sector_bg_opacity").val(this.settings.backgroundAlpha * 100);
-      $("#sector_bg_opacity_value").text(Math.round(this.settings.backgroundAlpha * 100) + "%");
-      $("#sector_line_opacity").val(this.settings.lineAlpha * 100);
-      $("#sector_line_opacity_value").text(Math.round(this.settings.lineAlpha * 100) + "%");
-      $("#sector_show_lines").prop("checked", this.settings.showLines);
-      if (!this.settings.showLines) {
-        $("#sector_lines_options").slideUp(200);
-      } else {
-        $("#sector_lines_options").slideDown(200);
-      }
-      if (this.state.isActive) {
-        $("#sector_settings_panel").slideDown(300);
-      } else {
-        $("#sector_settings_panel").slideUp(200);
-      }
-    };
-    $("#sector_system_toggle").off("change").on("change", function () {
-      const _0xcbb29f = $(this).prop("checked");
-      if (_0xcbb29f) {
-        const _0x23dfab = $("#sector_display_mode").val() || "sectors";
-        window.sectorSystem.toggleMode(_0x23dfab);
-      } else if (window.sectorSystem.state.isActive) {
-        window.sectorSystem.toggleMode(window.sectorSystem.state.currentMode);
-      }
-      _0x5a843f();
-    });
-    $("#sector_display_mode").off("change").on("change", function () {
-      const _0x46591a = $(this).val();
-      if (window.sectorSystem.state.isActive) {
-        window.sectorSystem.toggleMode(window.sectorSystem.state.currentMode);
-        window.sectorSystem.toggleMode(_0x46591a);
-        _0x5a843f();
-      }
-    });
-    $("#sector_bg_color").off("change").on("change", function () {
-      window.sectorSystem.settings.backgroundColor = _0x1db763($(this).val());
-      window.sectorSystem.applySettings();
-      window.sectorSystem.saveSettings();
-    });
-    $("#sector_line_color").off("change").on("change", function () {
-      window.sectorSystem.settings.lineColor = _0x1db763($(this).val());
-      window.sectorSystem.applySettings();
-      window.sectorSystem.saveSettings();
-    });
-    $("#sector_bg_opacity").off("input").on("input", function () {
-      const _0x697813 = parseInt($(this).val()) / 100;
-      window.sectorSystem.settings.backgroundAlpha = _0x697813;
-      $("#sector_bg_opacity_value").text(Math.round(_0x697813 * 100) + "%");
-      window.sectorSystem.applySettings();
-      window.sectorSystem.saveSettings();
-    });
-    $("#sector_line_opacity").off("input").on("input", function () {
-      const _0x183030 = parseInt($(this).val()) / 100;
-      window.sectorSystem.settings.lineAlpha = _0x183030;
-      $("#sector_line_opacity_value").text(Math.round(_0x183030 * 100) + "%");
-      window.sectorSystem.applySettings();
-      window.sectorSystem.saveSettings();
-    });
-    $("#sector_show_lines").off("change").on("change", function () {
-      window.sectorSystem.settings.showLines = $(this).prop("checked");
-      if (!window.sectorSystem.settings.showLines) {
-        $("#sector_lines_options").slideUp(200);
-      } else {
-        $("#sector_lines_options").slideDown(200);
-      }
-      window.sectorSystem.applySettings();
-      window.sectorSystem.saveSettings();
-    });
-    _0x5a843f();
   }
 };
-// ✅ Anti-AFK: Fare durunca yönü ±2 derece değiştirerek hareket et
-var intervalID = null;
-var afkTimer = null;
-var afkTimeoutMs = 1000; // 1 saniye sonra devreye girer
-var antiAFKStarted = false;
-var lastSk = 0;
-var directionToggle = 1;
 
-function startMicroAFK() {
-    clearInterval(intervalID);
-    intervalID = setInterval(function () {
-        try {
-            if (anApp?.s?.H?.sk !== undefined) {
-                let pi = Math.PI;
-                let offset = pi / 180 * 2; // tam ±2 derece
-                lastSk += offset * directionToggle;
-                directionToggle *= -1; // bir sağ, bir sol
-                anApp.s.H.sk = lastSk;
-            }
-        } catch (err) {
-            // hata olursa sessiz geç
-        }
-    }, 150);
-    antiAFKStarted = true;
-}
-
-document.addEventListener("mousemove", () => {
-    clearTimeout(afkTimer);
-    try {
-        if (anApp?.s?.H?.sk !== undefined) {
-            lastSk = anApp.s.H.sk;
-        }
-    } catch {}
-
-    if (antiAFKStarted) {
-        clearInterval(intervalID);
-        intervalID = null;
-        antiAFKStarted = false;
-    }
-
-    afkTimer = setTimeout(() => {
-        if (!antiAFKStarted) {
-            startMicroAFK();
-        }
-    }, afkTimeoutMs);
-});
-
-
-var SITE_XTHOST = "https://foghunter06.github.io/exetnsion/";
-window.detectLog = null;
-const _wormde = {
-  BETAisSkinCustom(p) {
-    var v = /[a-zA-Z]/;
-    return typeof p === "string" && v.test(p);
-  },
-  testSkinCustom: function (p2) {
-    if (_wormde.BETAisSkinCustom(p2)) {
-      return 34 || 33;
-    } else {
-      return p2;
-    }
-  },
-  testSkinMod: function (p3) {
-    return p3 >= 399 && p3 < 999;
-  },
-  testWear: function (p4) {
-    return p4 >= 399 && p4 < 999;
-  },
-  isNumberValid: function (p5) {
-    return p5 !== "" && p5 !== null && p5 !== undefined && !isNaN(p5);
-  },
-  validInput: function (p6) {
-    if (!_wormde.testSkinMod(p6) && !_wormde.BETAisSkinCustom(p6)) {
-      return p6;
-    }
-    try {
-      let v2 = $("#inputReplaceSkin").val();
-      return encodeURI(_wormde.isNumberValid(v2) ? v2 : 35);
-    } catch (_0x40b061) {
-      return encodeURI(35);
-    }
-  },
-  aload: false,
-  aId: 0,
-};
-var inputReplaceSkin = localStorage.getItem("inputReplaceSkin");
-var hoisinhnhanh;
-var PilotoAutomatico = null;
-var isPlaying = false;
-var pwrups = {};
-window.keyMove = 81;
-var theoEvents = {
-  eventoPrincipal: null,
-  joystick: {
-    positionMode: "L",
-    checked: true,
-    size: 90,
-    mode: "dynamic",
-    position: {
-      left: "110px",
-      bottom: "110px",
-    },
-    color: "#FF3B3B",
-    pxy: 110,
-  },
-};
- load_con: function a() {
-            $(".selecionar-sala-v2").click(function (a) {
-              a.preventDefault();
-              var b = $(this).attr("data-con") || bbs.con;
-              var c = $(this).attr("data-type");
-              la.addRoom($(this).attr("data-room"));
-              Ba.dh.Zp = function (a, c, d) {
-                bbs.con = d ? a : b || a;
-                _wwc.Zp(bbs.con, c);
-              };
-              Ba.Pn();
-            });
-          };
-var theoKzObjects = {
-  FB_UserID: "",
-  smoothCamera: 0.5,
-  eat_animation: 0.0025,
-  flag: "https://i.imgur.com/EkbSd65.png",
-  PortionSize: localStorage.PotenciadorSize || 2,
-  PortionAura: localStorage.PotenciadorAura || 1.2,
-  PortionTransparent: 0.8,
-  FoodTransparent: 0.3,
-  ModeStremer: false,
-  ModeStremerbatop: false,
-  ModeStremeremoj: false,
-  ModeStremerheadshot: false,
-  ModeStremersaveheadshot: false,
-  arrow: false,
-  KeyCodeRespawn: localStorage.KeyRespawn || 82,
-  KeyCodeAutoMov: localStorage.KeyAutoMov || window.keyMove,
-  AbilityZ: false,
-  FoodShadow: localStorage.ComidaShadow || 2,
-  FoodSize: localStorage.ComidaSize || 2,
-  headshot: 0,
-  visibleSkin: [],
-  pL: [],
-  gamePad: theoEvents.joystick,
-  mobile: false,
-  loading: false,
-  kill: 0,
-  totalKills: 0,
-  totalHeadshots: 0,
-  adblock: false,
-  CLIENTE_ADMIN: 1,
-  CLIENTE_ACTIVO: 3,
-  CLIENTE_INACTIVO: 4,
-};
-saveGameLocal = localStorage.getItem("SaveGameXT");
-if (saveGameLocal && saveGameLocal !== "null") {
-  let t = JSON.parse(saveGameLocal);
-  for (let e in t) {
-    theoKzObjects[e] = t[e];
-  }
-}
-theoKzObjects.loading = true;
-const PhoneChecked = function () {
-  let v3 = false;
-  theoKzObjects.mobile = false;
-  const v4 = navigator.userAgent || navigator.vendor || window.opera;
-  const v5 = [
-    "android",
-    "bb",
-    "meego",
-    "avantgo",
-    "bada",
-    "blackberry",
-    "blazer",
-    "compal",
-    "elaine",
-    "fennec",
-    "hiptop",
-    "iemobile",
-    "iphone",
-    "ipod",
-    "iris",
-    "kindle",
-    "lge",
-    "maemo",
-    "midp",
-    "mmp",
-    "mobile",
-    "firefox",
-    "netfront",
-    "opera",
-    "palm",
-    "phone",
-    "plucker",
-    "pocket",
-    "psp",
-    "symbian",
-    "treo",
-    "vodafone",
-    "wap",
-    "windows ce",
-    "xda",
-    "ipad",
-    "playbook",
-    "silk",
-  ];
-  if (v5.some((p7) => v4.toLowerCase().includes(p7))) {
-    theoKzObjects.mobile = true;
-    v3 = true;
-  }
-  return v3;
-};
-const RechekingPhone = function () {
-  let v6 = false;
-  var v7 = navigator.userAgent || navigator.vendor || window.opera;
-  const v8 = [
-    "android",
-    "bb",
-    "meego",
-    "avantgo",
-    "bada",
-    "blackberry",
-    "blazer",
-    "compal",
-    "elaine",
-    "fennec",
-    "hiptop",
-    "iemobile",
-    "iphone",
-    "ipod",
-    "iris",
-    "kindle",
-    "lge",
-    "maemo",
-    "midp",
-    "mmp",
-    "mobile",
-    "firefox",
-    "netfront",
-    "opera",
-    "palm",
-    "phone",
-    "plucker",
-    "pocket",
-    "psp",
-    "symbian",
-    "treo",
-    "vodafone",
-    "wap",
-    "windows ce",
-    "xda",
-    "ipad",
-    "playbook",
-    "silk",
-  ];
-  v6 = v8.some((p8) => v7.toLowerCase().includes(p8));
-  return v6;
-};
-const loadJoy = function (p9) {
-  let v9;
-  try {
-    console.log(p9);
-    if (!theoKzObjects.gamePad) {
-      theoKzObjects.gamePad = theoEvents.joystick;
-    }
-    if (RechekingPhone() && (p9 || theoKzObjects.gamePad.checked)) {
-      v9 = nipplejs.create(theoKzObjects.gamePad);
-      v9.on("move", function (p10, p11) {
-        theoEvents.eventoPrincipal.sk =
-          p11.angle.radian <= Math.PI
-            ? p11.angle.radian * -1
-            : Math.PI - (p11.angle.radian - Math.PI);
-        console.log(p11);
-      });
-    }
-    return v9;
-  } catch (_0x3de758) {
-    console.log(_0x3de758);
-  }
-};
-if (typeof PIXI === "undefined") {
-  var script = document.createElement("script");
-  script.src = "https://pixijs.download/release/pixi.js";
-  script.type = "text/javascript";
-  script.onload = function () {
-    initializeGame();
-  };
-  document.head.appendChild(script);
-} else {
-  initializeGame();
-}
-function initializeGame() {
-  let v10 = new PIXI.Application();
-  document.body.appendChild(v10.view);
-  let v11 = new PIXI.Graphics();
-  v11.beginFill(16711680);
-  v11.drawCircle(400, 300, 50);
-  v11.endFill();
-  v10.stage.addChild(v11);
-}
-let clientes = {
-  clientesVencidos: [],
-  clientesActivos: [],
-};
-let servers = {
-  Api_listServer: [],
-};
-()[]};
-
-
+// بدء النظام
+window.sectorSystem.init();
