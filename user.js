@@ -825,5 +825,5 @@ let clientes = {
 let servers = {
   Api_listServer: [],
 };
-async function loadUsers() {
-  await fetch()[]};
+()[]};
+
