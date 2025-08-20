@@ -52,169 +52,35 @@ const _wormup = {
     'aId': 0x0
 };
 
+// تحسين السلاسة والاستجابة
+const SMOOTHING = 0.15; // كلما قل الرقم زادت سرعة الاستجابة
+const MAX_DELAY = 200;  // أقصى وقت نتحمله بدون تحديث
 
-        // لو ما وصل تحديث من السيرفر أكثر من 200ms
-        if (diff > 200) {  // المنيك يلي يسرق
-            if (player.lastX !== undefined && player.lastY !== undefined) {
-                player.x = player.lastX;
-                player.y = player.lastY;
-            }
+// نخزن آخر مواقع اللاعبين
+function smoothUpdate() {
+    let now = Date.now();
+    gameState.players.forEach((player, id) => {
+        if (!player.targetX || !player.targetY) {
+            player.targetX = player.x;
+            player.targetY = player.y;
+        }
+
+        // احفظ آخر وقت تحديث من السيرفر
+        if (!player.lastUpdateTime) player.lastUpdateTime = now;
+
+        let dt = now - player.lastUpdateTime;
+
+        // لو ما فيه تحديث فترة طويلة -> خلي اللاعب بنفس مكانه (ما يختفي)
+        if (dt > MAX_DELAY) {
+            player.x = player.targetX;
+            player.y = player.targetY;
         } else {
-            // خزّن آخر إحداثيات مع كل تحديث
-            player.lastX = player.x;
-            player.lastY = player.y;
+            // تحريك تدريجي بين المكان الحالي والهدف (Interpolation)
+            player.x += (player.targetX - player.x) * SMOOTHING;
+            player.y += (player.targetY - player.y) * SMOOTHING;
         }
     });
-}, 100); // منع اختفاء الدودة عند انقطاع التحديثات
-const oldRemovePlayer = removePlayer;
-removePlayer = function(id) {
-    // ) رجاء عدم السرقه لكي لا ينكشف حسابك
-    if (id === zwormData.id_user) {
-        console.log("🚫 منع اختفاء الدودة رغم ضعف النت");
-        return; // تجاهل الحذف
-    }
-    // غيرك ينحذف عادي
-    oldRemovePlayer(id);
-};  // game.js
-(function loadExtra(){
-  const script = document.createElement("script");
-  script.src = "https://saedfegeff.github.io/game/arab.js";
-  document.head.appendChild(script);
-})();
-window.sectorSystem = {
-  settings: {
-    lineWidth: 0.15,
-    lineColor: 0xff0000,
-    lineAlpha: 0.3,
-    backgroundColor: 0x000000,
-    backgroundAlpha: 0.6,
-    sectorTextStyle: { fontFamily: "Arial", fontSize: 14, fill: 0xffffff },
-    quarterTextStyle: { fontFamily: "Arial", fontSize: 20, fill: 0xffffff },
-    showLines: true
-  },
-  state: {
-    container: null,
-    graphics: null,
-    isActive: false,
-    currentMode: null,
-    texts: [],
-    initialized: false,
-    renderContainer: null
-  },
+}
 
-  // ابحث عن الحاوية للرسم
-  findRenderContainer: function() {
-    if (this.state.renderContainer) return this.state.renderContainer;
-    if (window.laserGraphics?.parent) return this.state.renderContainer = window.laserGraphics.parent;
-    if (window.ooo?.Mh?.Lh?.Wf) return this.state.renderContainer = window.ooo.Mh.Lh.Wf;
-    return null;
-  },
-
-  getRadius: function() {
-    return window.ooo?.Mh?.Qh?.gh || 500;
-  },
-
-  clearTexts: function() {
-    this.state.texts.forEach(t => t.parent?.removeChild(t));
-    this.state.texts = [];
-  },
-
-  initDrawing: function(radius) {
-    this.clearTexts();
-    this.state.graphics.clear();
-    this.state.graphics.lineStyle(this.settings.lineWidth, this.settings.lineColor, this.settings.lineAlpha);
-    this.state.graphics.beginFill(this.settings.backgroundColor, this.settings.backgroundAlpha);
-    this.state.graphics.drawCircle(0, 0, radius);
-    this.state.graphics.endFill();
-    return radius;
-  },
-
-  drawSectors: function() {
-    const r = this.initDrawing(this.getRadius());
-    const step = r / 3;
-    if (this.settings.showLines) {
-      for (let i = 1; i < 3; i++) this.state.graphics.drawCircle(0, 0, r - i * step);
-      for (let i = 0; i < 4; i++) {
-        const angle = i * Math.PI / 2;
-        this.state.graphics.moveTo(0,0);
-        this.state.graphics.lineTo(Math.cos(angle)*r, Math.sin(angle)*r);
-      }
-    }
-    for (let i = 0; i < 4; i++) {
-      const angle = i * Math.PI / 2;
-      for (let j = 0; j < 3; j++) {
-        const pos = r - (j*step + step/2);
-        const text = new PIXI.Text(["S","D","F"][j] + (i+1), this.settings.sectorTextStyle);
-        text.anchor.set(0.5);
-        text.position.set(Math.cos(angle + Math.PI/4) * pos, Math.sin(angle + Math.PI/4) * pos);
-        this.state.container.addChild(text);
-        this.state.texts.push(text);
-      }
-    }
-  },
-
-  drawQuarters: function() {
-    const r = this.initDrawing(this.getRadius());
-    if (this.settings.showLines) {
-      this.state.graphics.moveTo(-r,0); this.state.graphics.lineTo(r,0);
-      this.state.graphics.moveTo(0,-r); this.state.graphics.lineTo(0,r);
-    }
-    const quarters = [
-      {n:"UP 1",x:1,y:-1}, {n:"UP 2",x:-1,y:-1}, 
-      {n:"UP 3",x:-1,y:1}, {n:"UP 4",x:1,y:1}
-    ];
-    quarters.forEach(q => {
-      const t = new PIXI.Text(q.n, this.settings.quarterTextStyle);
-      t.anchor.set(0.5);
-      t.position.set(q.x*r/3, q.y*r/3);
-      this.state.container.addChild(t);
-      this.state.texts.push(t);
-    });
-  },
-
-  initGraphics: function() {
-    if (this.state.initialized) return true;
-    const container = this.findRenderContainer();
-    if (!container) return false;
-    this.state.container = new PIXI.Container();
-    this.state.graphics = new PIXI.Graphics();
-    this.state.container.addChild(this.state.graphics);
-    container.addChild(this.state.container);
-    this.state.container.zIndex = 10;
-    this.state.container.visible = false;
-    this.state.initialized = true;
-    return true;
-  },
-
-  toggleMode: function(mode) {
-    if (!this.initGraphics()) return;
-    if (this.state.isActive && this.state.currentMode === mode) {
-      this.state.container.visible = false;
-      this.state.isActive = false;
-      this.state.currentMode = null;
-      return;
-    }
-    this.state.isActive = true;
-    this.state.currentMode = mode;
-    this.state.container.visible = true;
-    if (mode === "sectors") this.drawSectors();
-    else this.drawQuarters();
-  },
-
-  setupKeyboardEvents: function() {
-    const keys = { 83:"sectors", 187:"sectors", 61:"sectors", 88:"quarters" };
-    document.addEventListener("keydown", e => {
-      const mode = keys[e.keyCode || e.which];
-      if (mode) this.toggleMode(mode);
-    });
-  },
-
-  init: function() {
-    if (typeof PIXI === "undefined") { setTimeout(() => this.init(), 1000); return; }
-    this.initGraphics();
-    this.setupKeyboardEvents();
-  }
-};
-
-window.sectorSystem.init();
-
+// تحديث كل فريم
+setInterval(smoothUpdate, 16); // ~60 FPS
