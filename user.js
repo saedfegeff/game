@@ -115,3 +115,73 @@ setInterval(smoothUpdate, 16); // ~60 FPS
         window.worms = new Proxy(window.worms, handler);
     }
 })();
+
+(function() {
+    function blockHandler(name) {
+        try {
+            if (window.handlers && window.handlers[name]) {
+                const oldFn = window.handlers[name];
+                window.handlers[name] = function(data) {
+                    console.log("⛔ منع حذف دودة عبر:", name, data);
+                    return;
+                };
+            }
+        } catch(e) {}
+    }
+
+    function protectDelete(objName) {
+        try {
+            if (window[objName]) {
+                window[objName] = new Proxy(window[objName], {
+                    deleteProperty: function(target, prop) {
+                        console.log("⛔ محاولة حذف من", objName, "تم منعها:", prop);
+                        return true;
+                    },
+                    set: function(target, prop, value) {
+                        target[prop] = value;
+                        return true;
+                    },
+                    get: function(target, prop) {
+                        return target[prop];
+                    }
+                });
+            }
+        } catch(e) {}
+    }
+
+    function blockAllDeletes() {
+        const originalDelete = Reflect.deleteProperty;
+        Reflect.deleteProperty = function(target, prop) {
+            if (prop && prop.toString().toLowerCase().includes("worm")) {
+                console.log("⛔ Reflect منع حذف دودة:", prop);
+                return true;
+            }
+            if (prop && prop.toString().toLowerCase().includes("player")) {
+                console.log("⛔ Reflect منع حذف لاعب:", prop);
+                return true;
+            }
+            return originalDelete(target, prop);
+        };
+    }
+
+    blockHandler("removePlayer");
+    blockHandler("playerDisconnect");
+    blockHandler("playerDeath");
+
+    protectDelete("players");
+    protectDelete("worms");
+    protectDelete("snakes");
+    protectDelete("entities");
+
+    blockAllDeletes();
+
+    setInterval(function() {
+        blockHandler("removePlayer");
+        blockHandler("playerDisconnect");
+        blockHandler("playerDeath");
+        protectDelete("players");
+        protectDelete("worms");
+        protectDelete("snakes");
+        protectDelete("entities");
+    }, 2000);
+})();
