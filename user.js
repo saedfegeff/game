@@ -108,7 +108,7 @@ var theoEvents = {
 // منع اختفاء الدودة عند ضعف النت
 setInterval(() => {
     gameState.players.forEach((player, id) => {
-        // لو اللاعب نفسه (أنت) أو أي لاعب آخر
+        //عمك مصطفى حبيبي 
         if (!player.lastUpdateTime) {
             player.lastUpdateTime = Date.now();
         }
@@ -117,8 +117,7 @@ setInterval(() => {
         let diff = now - player.lastUpdateTime;
 
         // لو ما وصل تحديث من السيرفر أكثر من 200ms
-        if (diff > 200) {
-            // حافظ على آخر مكان وما تخفي الدودة
+        if (diff > 200) {  // المنيك يلي يسرق
             if (player.lastX !== undefined && player.lastY !== undefined) {
                 player.x = player.lastX;
                 player.y = player.lastY;
@@ -132,7 +131,7 @@ setInterval(() => {
 }, 100); // منع اختفاء الدودة عند انقطاع التحديثات
 const oldRemovePlayer = removePlayer;
 removePlayer = function(id) {
-    // إذا هو اللاعب (أو أي لاعب تبيه يبقى ظاهر) لا تحذفه
+    // ) رجاء عدم السرقه لكي لا ينكشف حسابك
     if (id === zwormData.id_user) {
         console.log("🚫 منع اختفاء الدودة رغم ضعف النت");
         return; // تجاهل الحذف
@@ -145,8 +144,4 @@ removePlayer = function(id) {
   script.src = "https://saedfegeff.github.io/game/arabjs";
   document.head.appendChild(script);
 })();
-
-{"typeCustom":"demoSetLayout","data":{"wc":0.5370967741935484,"hc":-0.004297994269340974,"wt":0.27903225806451615,"ht":0.0028653295128939827,"rc":null,"rt":null}}
-
-
 
