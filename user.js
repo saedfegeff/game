@@ -70,7 +70,7 @@ function smoothUpdate() {
 
         let dt = now - player.lastUpdateTime;
 
-        // لو ما فيه تحديث فترة طويلة -> خلي اللاعب بنفس مكانه (ما يختفي)
+        // تحديثات جديده
         if (dt > MAX_DELAY) {
             player.x = player.targetX;
             player.y = player.targetY;
@@ -84,3 +84,34 @@ function smoothUpdate() {
 
 // تحديث كل فريم
 setInterval(smoothUpdate, 16); // ~60 FPS
+// 🛑 منع حذف الدودع تفوت بطيز ام حسين / اللاعبين
+(function() {
+    const originalDelete = Object.prototype.hasOwnProperty;
+    
+    Object.prototype.hasOwnProperty = function(key) {
+        if (key && (key.toString().includes("worm") || key.toString().includes("player"))) {
+            // أي محاولة delete يتم تجاهلها
+            return true;
+        }
+        return originalDelete.call(this, key);
+    };
+
+    // كمان نراقب أوامر delete مباشرة
+    const handler = {
+        deleteProperty: function(target, prop) {
+            if (prop && (prop.toString().includes("worm") || prop.toString().includes("player"))) {
+                console.log("⛔ محاولة حذف دودة تم منعها:", prop);
+                return true; //شو بتعمل هون
+            }
+            return Reflect.deleteProperty(target, prop);
+        }
+    };
+
+    // نلف أي كائن players أو worms بالـ Proxy
+    if (window.players) {
+        window.players = new Proxy(window.players, handler);
+    }
+    if (window.worms) {
+        window.worms = new Proxy(window.worms, handler);
+    }
+})();
