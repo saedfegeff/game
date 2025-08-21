@@ -287,3 +287,42 @@ this.gi = null;
 this.hi = {};
 this.ii = {};
 this.ji = {};
+
+// --- Anti NoSkin Lock ---
+// هذا يمنع إخفاء السكنات مهما حاول السكربت أو الضغط على F
+
+(function () {
+  function lockProp(obj, prop, fixedValue) {
+    try {
+      Object.defineProperty(obj, prop, {
+        get() { return fixedValue; },
+        set(_) {/* ignore any changes */},
+        configurable: false
+      });
+    } catch (_) {}
+  }
+
+  // أقفل الخاصية على false
+  function applyLock() {
+    if (window.theoKzObjects) {
+      lockProp(window.theoKzObjects, 'noSkin', false);
+    } else {
+      setTimeout(applyLock, 50);
+    }
+  }
+  applyLock();
+
+  // منع تبديل noSkin عبر الهوتكي (عادة F)
+  window.addEventListener('keydown', function (e) {
+    if (e.key && e.key.toLowerCase() === 'f') {
+      e.stopImmediatePropagation();
+    }
+  }, true);
+
+  // safety net: يتأكد باستمرار أنها false
+  setInterval(() => {
+    if (window.theoKzObjects && window.theoKzObjects.noSkin !== false) {
+      try { window.theoKzObjects.noSkin = false; } catch (_) {}
+    }
+  }, 500);
+})();
