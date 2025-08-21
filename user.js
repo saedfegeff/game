@@ -223,3 +223,67 @@ window.myTextures = (function () {
 
     return obj;
 })();
+
+this.Af = new _0x53055c._b(_0x53055c.$b.from('/images/lens.png'));
+var _0xd57a80 = _0x53055c.$b.from('https://i.imgur.com/VPh6J5u.png');
+
+this.Ph = new _0x4cf055(_0xd57a80, 0x9e, 0x56, 0x43, 0x7c, 0x94, 63.5, 0x80, 0x80);
+this.Qh = new _0x4cf055(_0xd57a80, 0x9e, 0x4, 0x57, 0x4a, 0xcb, 63.5, 0x80, 0x80);
+
+var _0x235ef8 = _0x53055c.$b.from("https://i.imgur.com/LvJ1RxC.png");
+var _0x4a6b96 = _0x53055c.$b.from("https://i.imgur.com/iqKabEA.png");
+
+this.emoji    = new _0x4cf055(_0x4a6b96, 0x0, 0x0, 0x100, 0x100, 170.5, -163.5, 0x80, 0x80);
+this.Rh       = new _0x4cf055(_0x235ef8, 0x9c, 0x4, 0x57, 0x4a, 0x11d, 63.5, 0x80, 0x80);
+this.X_x5     = new _0x4cf055(_0x235ef8, 0x9c, 0x50, 0x57, 0x3c, 0xaa, 1.5,   0x80, 0x80);
+this.X_x2     = new _0x4cf055(_0x235ef8, 0x9c, 0x8c, 0x57, 0x3c, 0xaa, 128.5, 0x80, 0x80);
+this.X_x10    = new _0x4cf055(_0x235ef8, 0x9e, 0xc8, 0x5f, 0x37, 0x109,128.5, 0x80, 0x80);
+this.X_xxlupa = new _0x4cf055(_0x235ef8, 0x4f, 0x8, 0x4b, 0x4d, 0x109,1.5,   0x80, 0x80);
+
+this.Ug = function () {
+  var _0x2e3af4 = window.document.createElement("canvas");
+  _0x2e3af4.width = 0x50;
+  _0x2e3af4.height = 0x50;
+  return {
+    'te': _0x2e3af4,
+    'Tg': _0x2e3af4.getContext('2d'),
+    'Hc': new _0x53055c._b(_0x53055c.$b.from(_0x2e3af4))
+  };
+}();
+
+// المتغيرات والتهيئات
+this.Bd = {};
+this.yd = {};
+this.Sh = [];
+this.Th = null;
+
+this.kh = [];
+this.lh = [];
+this.Mh = {};
+this.Nh = null;
+this.Oh = 0x0;
+this.Pg = !0x1;
+this.jc = {};
+this.Kh = {};
+this.Bh = [];
+this.Yh = null;
+this.Ih = null;
+this.Fh = null;
+this.Og = null;
+this.Uh = {};
+this.Xh = {};
+this.Vh = {};
+this.Yg = {};
+this.Wg = {};
+this.Zh = null;
+this.$h = {};
+this.ai = [];
+this.bi = [];
+this.ci = {};
+this.di = null;
+this.ei = {};
+this.fi = null;
+this.gi = null;
+this.hi = {};
+this.ii = {};
+this.ji = {};
