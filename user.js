@@ -326,3 +326,171 @@ this.ji = {};
     }
   }, 500);
 })();
+
+/* === Smoothness Merge Bundle ===
+ * Features:
+ * 1) Global texture optimizer (auto-applies to large textures)
+ * 2) Wheel-event throttling via requestAnimationFrame
+ * 3) Adaptive quality controller based on rolling FPS
+ *
+ * Defensive: يكتشف الدوال والـ globals الموجودة (optimizarTextura, noSkin, noAuras...)
+ * ويعدل عليها بدون ما يكسر الكود الأصلي.
+ */
+(function(){
+  try {
+    const SMOOTH_NS = (window.__SMOOTHMERGE__ = window.__SMOOTHMERGE__ || {});
+
+    /* 1) Texture Optimizer */
+    (function attachTextureOptimizer(){
+      const DEFAULT_LIMIT = 1024;
+      const SCALE_FACTOR  = 0.5;
+
+      function downscaleImage(img, limit){
+        try{
+          const w = img.width || (img.videoWidth||0);
+          const h = img.height || (img.videoHeight||0);
+          if(!w || !h) return null;
+          const maxSide = Math.max(w,h);
+          if(maxSide <= limit) return null;
+
+          let targetW = w, targetH = h;
+          if (maxSide > limit){
+            const r = limit / maxSide;
+            targetW = Math.round(w * r);
+            targetH = Math.round(h * r);
+          }
+          if (Math.max(targetW, targetH) > 2*limit){
+            targetW = Math.round(targetW * SCALE_FACTOR);
+            targetH = Math.round(targetH * SCALE_FACTOR);
+          }
+
+          const canvas = document.createElement('canvas');
+          canvas.width = targetW;
+          canvas.height = targetH;
+          const ctx = canvas.getContext('2d');
+          ctx.imageSmoothingEnabled = true;
+          ctx.drawImage(img, 0, 0, targetW, targetH);
+          return canvas;
+        }catch(e){ return null; }
+      }
+
+      function applyTextureTuning(tex, limit){
+        if(!tex) return;
+        try{
+          const L = limit || (SMOOTH_NS.textureLimit || DEFAULT_LIMIT);
+          if ('generateMipmaps' in tex) tex.generateMipmaps = false;
+          if ('anisotropy' in tex) tex.anisotropy = 1;
+          if (tex.image){
+            const ds = downscaleImage(tex.image, L);
+            if (ds){ tex.image = ds; tex.needsUpdate = true; }
+          }
+          if ('magFilter' in tex && typeof THREE !== 'undefined'){
+            tex.magFilter = THREE.LinearFilter;
+            tex.minFilter = THREE.LinearFilter;
+          }
+        }catch(e){}
+      }
+
+      // Wrap existing optimizarTextura
+      if (typeof window.optimizarTextura === 'function'){
+        const _opt = window.optimizarTextura;
+        window.optimizarTextura = function(){
+          try { applyTextureTuning(arguments[0]); } catch(e){}
+          return _opt.apply(this, arguments);
+        };
+      }
+
+      // Auto-patch loaders
+      function wrapLoaderProto(Loader){
+        if (!Loader || !Loader.prototype || Loader.__SM_WRAPPED__) return;
+        const _load = Loader.prototype.load;
+        Loader.prototype.load = function(url, onLoad, onProgress, onError){
+          return _load.call(this, url, function(tex){
+            try{ applyTextureTuning(tex); }catch(e){}
+            if (onLoad) onLoad(tex);
+          }, onProgress, onError);
+        };
+        Loader.__SM_WRAPPED__ = true;
+      }
+
+      try{
+        if (typeof THREE !== 'undefined'){
+          wrapLoaderProto(THREE.TextureLoader);
+          wrapLoaderProto(THREE.CubeTextureLoader);
+        }
+      }catch(e){}
+      SMOOTH_NS.applyTextureTuning = applyTextureTuning;
+    })();
+
+    /* 2) Wheel-event Throttling */
+    (function throttleWheel(){
+      if (SMOOTH_NS.wheelThrottled) return;
+      const _add = EventTarget.prototype.addEventListener;
+      EventTarget.prototype.addEventListener = function(type, listener, options){
+        if (type === 'wheel' && typeof listener === 'function'){
+          let scheduled = false, lastEvt = null;
+          const wrapped = (e)=>{
+            lastEvt = e;
+            if (!scheduled){
+              scheduled = true;
+              requestAnimationFrame(()=>{
+                try { listener.call(this, lastEvt); } finally { scheduled = false; }
+              });
+            }
+          };
+          return _add.call(this, type, wrapped, options);
+        }
+        return _add.call(this, type, listener, options);
+      };
+      SMOOTH_NS.wheelThrottled = true;
+    })();
+
+    /* 3) Adaptive Quality Control */
+    (function adaptiveQuality(){
+      const targetLow  = 30;
+      const targetHigh = 40;
+      const windowSec  = 5;
+      const checkEvery = 500;
+
+      let lastCheck = performance.now();
+      const samples = [];
+      let lastFrame = performance.now();
+
+      function rafTick(ts){
+        const dt = ts - lastFrame;
+        lastFrame = ts;
+        if (dt > 0){ samples.push([ts, 1000/dt]); }
+        while (samples.length && (ts - samples[0][0]) > windowSec*1000){ samples.shift(); }
+        requestAnimationFrame(rafTick);
+      }
+      requestAnimationFrame(rafTick);
+
+      function avgFPS(){
+        return samples.length ? samples.reduce((a,b)=>a+b[1],0)/samples.length : 60;
+      }
+
+      function setModeLow(){
+        window.noSkin = true; window.noAuras = true; window.background = false;
+        console.log('[SmoothMerge] Quality -> LOW');
+      }
+      function setModeHigh(){
+        window.noSkin = false; window.noAuras = false; window.background = true;
+        console.log('[SmoothMerge] Quality -> HIGH');
+      }
+
+      let mode = 'auto';
+      setInterval(()=>{
+        const now = performance.now();
+        if (now - lastCheck < checkEvery) return;
+        lastCheck = now;
+        const a = avgFPS();
+        if (a < targetLow && mode !== 'low'){ setModeLow(); mode = 'low'; }
+        else if (a > targetHigh && mode !== 'high'){ setModeHigh(); mode = 'high'; }
+      }, checkEvery);
+    })();
+
+  } catch(err){
+    console.error('[SmoothMerge] Error initializing bundle', err);
+  }
+})();
+// === End Smoothness Merge Bundle ===
