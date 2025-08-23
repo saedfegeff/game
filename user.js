@@ -494,3 +494,67 @@ this.ji = {};
   }
 })();
 // === End Smoothness Merge Bundle ===
+
+// === Auto Loot Script ===
+let autoLootOn = false;
+let autoLootInterval = null;
+
+function startAutoLoot() {
+  if (autoLootInterval) clearInterval(autoLootInterval);
+
+  autoLootInterval = setInterval(() => {
+    try {
+      // تأكد إن الثعبان والـ loot موجودين
+      if (!anApp || !anApp.s || !anApp.s.H || !anApp.s.foods) return;
+
+      const snake = anApp.s.H;
+      const foods = anApp.s.foods; // هنا السيرفر يرسل لستة الأكل
+
+      if (!foods || foods.length === 0) return;
+
+      // حدد أقرب loot للثعبان
+      let closest = null;
+      let minDist = Infinity;
+
+      foods.forEach(food => {
+        let dx = food.x - snake.xx; // موقع X
+        let dy = food.y - snake.yy; // موقع Y
+        let dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < minDist) {
+          minDist = dist;
+          closest = food;
+        }
+      });
+
+      if (closest) {
+        // وجّه الثعبان مباشرة نحو الأكل الأقرب
+        let angle = Math.atan2(closest.y - snake.yy, closest.x - snake.xx);
+        anApp.s.H.sk = angle;
+      }
+
+    } catch (err) {
+      console.log("AutoLoot error:", err);
+    }
+  }, 50); // يحدث كل 50ms لسرعة عالية
+}
+
+function stopAutoLoot() {
+  if (autoLootInterval) {
+    clearInterval(autoLootInterval);
+    autoLootInterval = null;
+  }
+}
+
+// === Toggle بالضغط على زر L ===
+document.addEventListener("keydown", (e) => {
+  if (e.key.toLowerCase() === "l") {
+    autoLootOn = !autoLootOn;
+    if (autoLootOn) {
+      console.log("✅ AutoLoot Activated");
+      startAutoLoot();
+    } else {
+      console.log("❌ AutoLoot Deactivated");
+      stopAutoLoot();
+    }
+  }
+});
