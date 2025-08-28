@@ -561,7 +561,6 @@ document.addEventListener("keydown", (e) => {
 this.Bd = {};
 this.yd = {};
 this.Sh = [];
-this.Th = null;
 
 // 🔽 هنا تحط الكود تبعك
 this.Af = new _0x53055c._b(_0x53055c.$b.from('/images/lens.png'));
@@ -584,9 +583,11 @@ this.Ug = function () {
     'te': _0x2e3af4,
     'Tg': _0x2e3af4.getContext('2d'),
     'Hc': new _0x53055c._b(_0x53055c.$b.from(_0x2e3af4))
+      this.Th = null;
   };
 }();
 
 };
+
 
 
