@@ -579,11 +579,7 @@ window.Ug = function () {
     'Tg': _0x2e3af4.getContext('2d'),
     'Hc': new _0x53055c._b(_0x53055c.$b.from(_0x2e3af4))
   };
-}();
-window.Bd = {};
-window.yd = {};
-window.Sh = [];
-window.Th = null;
+    
 var () } 
 this.Af = new _0x53055c._b(_0x53055c.$b.from('/images/lens.png'));
         var _0xd57a80 = _0x53055c.$b.from('https://i.imgur.com/VPh6J5u.png');
@@ -612,3 +608,4 @@ this.Af = new _0x53055c._b(_0x53055c.$b.from('/images/lens.png'));
         this.Sh = [];
         this.Th = null;
       };
+
