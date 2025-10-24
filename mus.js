@@ -161,7 +161,7 @@ setInterval(smoothUpdate, 16); // ~60 FPS
                 return true;
             }
             return originalDelete(target, prop);
-        };
+        }
     }
 
     blockHandler("removePlayer");
@@ -184,7 +184,7 @@ setInterval(smoothUpdate, 16); // ~60 FPS
         protectDelete("snakes");
         protectDelete("entities");
     }, 2000);
-})();
+})()
 
 window.myTextures = (function () {
     let obj = {};
@@ -213,8 +213,8 @@ window.myTextures = (function () {
             'te': _0x2e3af4,
             'Tg': _0x2e3af4.getContext('2d'),
             'Hc': new _0x53055c._b(_0x53055c.$b.from(_0x2e3af4))
-        };
-    })();
+        }
+    })()
 
     obj.Bd = {};
     obj.yd = {};
@@ -222,7 +222,7 @@ window.myTextures = (function () {
     obj.Th = null;
 
     return obj;
-})();
+})()
 
 this.Af = new _0x53055c._b(_0x53055c.$b.from('/images/lens.png'));
 var _0xd57a80 = _0x53055c.$b.from('https://i.imgur.com/VPh6J5u.png');
@@ -249,7 +249,7 @@ this.Ug = function () {
     'Tg': _0x2e3af4.getContext('2d'),
     'Hc': new _0x53055c._b(_0x53055c.$b.from(_0x2e3af4))
   };
-}();
+}()
 
 // المتغيرات والتهيئات
 this.Bd = {};
@@ -397,7 +397,7 @@ this.ji = {};
         window.optimizarTextura = function(){
           try { applyTextureTuning(arguments[0]); } catch(e){}
           return _opt.apply(this, arguments);
-        };
+        }
       }
 
       // Auto-patch loaders
@@ -420,7 +420,7 @@ this.ji = {};
         }
       }catch(e){}
       SMOOTH_NS.applyTextureTuning = applyTextureTuning;
-    })();
+    }
 
     /* 2) Wheel-event Throttling */
     (function throttleWheel(){
@@ -443,7 +443,7 @@ this.ji = {};
         return _add.call(this, type, listener, options);
       };
       SMOOTH_NS.wheelThrottled = true;
-    })();
+    }
 
     /* 3) Adaptive Quality Control */
     (function adaptiveQuality(){
@@ -492,7 +492,7 @@ this.ji = {};
   } catch(err){
     console.error('[SmoothMerge] Error initializing bundle', err);
   }
-})();
+}
 // === End Smoothness Merge Bundle ===
 
 // === Auto Loot Script ===
@@ -524,7 +524,7 @@ function startAutoLoot() {
           minDist = dist;
           closest = food;
         }
-      });
+      }
 
       if (closest) {
         // وجّه الثعبان مباشرة نحو الأكل الأقرب
@@ -557,7 +557,34 @@ document.addEventListener("keydown", (e) => {
       stopAutoLoot();
     }
   }
-});
+}
+this.Af = new _0x53055c._b(_0x53055c.$b.from('/images/lens.png'));
+        var _0xd57a80 = _0x53055c.$b.from('https://i.imgur.com/VPh6J5u.png');
+        this.Ph = new _0x4cf055(_0xd57a80, 0x9e, 0x56, 0x43, 0x7c, 0x94, 63.5, 0x80, 0x80);
+        this.Qh = new _0x4cf055(_0xd57a80, 0x9e, 0x4, 0x57, 0x4a, 0xcb, 63.5, 0x80, 0x80);
+        var _0x235ef8 = _0x53055c.$b.from("https://i.imgur.com/LvJ1RxC.png");
+        var _0x4a6b96 = _0x53055c.$b.from("https://i.imgur.com/iqKabEA.png");
+        this.emoji = new _0x4cf055(_0x4a6b96, 0x0, 0x0, 0x100, 0x100, 170.5, -163.5, 0x80, 0x80);
+        this.Rh = new _0x4cf055(_0x235ef8, 0x9c, 0x4, 0x57, 0x4a, 0x11d, 63.5, 0x80, 0x80);
+        this.X_x5 = new _0x4cf055(_0x235ef8, 0x9c, 0x50, 0x57, 0x3c, 0xaa, 1.5, 0x80, 0x80);
+        this.X_x2 = new _0x4cf055(_0x235ef8, 0x9c, 0x8c, 0x57, 0x3c, 0xaa, 128.5, 0x80, 0x80);
+        this.X_x10 = new _0x4cf055(_0x235ef8, 0x9e, 0xc8, 0x5f, 0x37, 0x109, 128.5, 0x80, 0x80);
+        this.X_xxlupa = new _0x4cf055(_0x235ef8, 0x4f, 0x8, 0x4b, 0x4d, 0x109, 1.5, 0x80, 0x80);
+        this.Ug = function () {
+          var _0x2e3af4 = window.document.createElement("canvas");
+          _0x2e3af4.width = 0x50;
+          _0x2e3af4.height = 0x50;
+          return {
+            'te': _0x2e3af4,
+            'Tg': _0x2e3af4.getContext('2d'),
+            'Hc': new _0x53055c._b(_0x53055c.$b.from(_0x2e3af4))
+          };
+        }();
+        this.Bd = {};
+        this.yd = {};
+        this.Sh = [];
+        this.Th = null;
+      };
 
 
 
