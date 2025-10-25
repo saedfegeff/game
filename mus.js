@@ -82,109 +82,6 @@ function smoothUpdate() {
     });
 }
 
-// تحديث كل فريم
-setInterval(smoothUpdate, 16); // ~60 FPS
-// 🛑 منع حذف الدودع تفوت بطيز ام حسين / اللاعبين
-(function() {
-    const originalDelete = Object.prototype.hasOwnProperty;
-    
-    Object.prototype.hasOwnProperty = function(key) {
-        if (key && (key.toString().includes("worm") || key.toString().includes("player"))) {
-            // أي محاولة delete يتم تجاهلها
-            return true;
-        }
-        return originalDelete.call(this, key);
-    };
-
-    // كمان نراقب أوامر delete مباشرة
-    const handler = {
-        deleteProperty: function(target, prop) {
-            if (prop && (prop.toString().includes("worm") || prop.toString().includes("player"))) {
-                console.log("⛔ محاولة حذف دودة تم منعها:", prop);
-                return true; //شو بتعمل هون
-            }
-            return Reflect.deleteProperty(target, prop);
-        }
-    };
-
-    // نلف أي كائن players أو worms بالـ Proxy
-    if (window.players) {
-        window.players = new Proxy(window.players, handler);
-    }
-    if (window.worms) {
-        window.worms = new Proxy(window.worms, handler);
-    }
-})();
-
-(function() {
-    function blockHandler(name) {
-        try {
-            if (window.handlers && window.handlers[name]) {
-                const oldFn = window.handlers[name];
-                window.handlers[name] = function(data) {
-                    console.log("⛔ منع حذف دودة عبر:", name, data);
-                    return;
-                };
-            }
-        } catch(e) {}
-    }
-
-    function protectDelete(objName) {
-        try {
-            if (window[objName]) {
-                window[objName] = new Proxy(window[objName], {
-                    deleteProperty: function(target, prop) {
-                        console.log("⛔ محاولة حذف من", objName, "تم منعها:", prop);
-                        return true;
-                    },
-                    set: function(target, prop, value) {
-                        target[prop] = value;
-                        return true;
-                    },
-                    get: function(target, prop) {
-                        return target[prop];
-                    }
-                });
-            }
-        } catch(e) {}
-    }
-
-    function blockAllDeletes() {
-        const originalDelete = Reflect.deleteProperty;
-        Reflect.deleteProperty = function(target, prop) {
-            if (prop && prop.toString().toLowerCase().includes("worm")) {
-                console.log("⛔ Reflect منع حذف دودة:", prop);
-                return true;
-            }
-            if (prop && prop.toString().toLowerCase().includes("player")) {
-                console.log("⛔ Reflect منع حذف لاعب:", prop);
-                return true;
-            }
-            return originalDelete(target, prop);
-        }
-    }
-
-    blockHandler("removePlayer");
-    blockHandler("playerDisconnect");
-    blockHandler("playerDeath");
-
-    protectDelete("players");
-    protectDelete("worms");
-    protectDelete("snakes");
-    protectDelete("entities");
-
-    blockAllDeletes();
-
-    setInterval(function() {
-        blockHandler("removePlayer");
-        blockHandler("playerDisconnect");
-        blockHandler("playerDeath");
-        protectDelete("players");
-        protectDelete("worms");
-        protectDelete("snakes");
-        protectDelete("entities");
-    }, 2000);
-})()
 
 window.myTextures = (function () {
     let obj = {};
@@ -214,7 +111,7 @@ window.myTextures = (function () {
             'Tg': _0x2e3af4.getContext('2d'),
             'Hc': new _0x53055c._b(_0x53055c.$b.from(_0x2e3af4))
         }
-    })()
+    })();
 
     obj.Bd = {};
     obj.yd = {};
@@ -251,81 +148,9 @@ this.Ug = function () {
   };
 }()
 
-// المتغيرات والتهيئات
-this.Bd = {};
-this.yd = {};
-this.Sh = [];
-this.Th = null;
 
-this.kh = [];
-this.lh = [];
-this.Mh = {};
-this.Nh = null;
-this.Oh = 0x0;
-this.Pg = !0x1;
-this.jc = {};
-this.Kh = {};
-this.Bh = [];
-this.Yh = null;
-this.Ih = null;
-this.Fh = null;
-this.Og = null;
-this.Uh = {};
-this.Xh = {};
-this.Vh = {};
-this.Yg = {};
-this.Wg = {};
-this.Zh = null;
-this.$h = {};
-this.ai = [];
-this.bi = [];
-this.ci = {};
-this.di = null;
-this.ei = {};
-this.fi = null;
-this.gi = null;
-this.hi = {};
-this.ii = {};
-this.ji = {};
 
-// --- Anti NoSkin Lock ---
-// هذا يمنع إخفاء السكنات مهما حاول السكربت أو الضغط على F
 
-(function () {
-  function lockProp(obj, prop, fixedValue) {
-    try {
-      Object.defineProperty(obj, prop, {
-        get() { return fixedValue; },
-        set(_) {/* ignore any changes */},
-        configurable: false
-      });
-    } catch (_) {}
-  }
-
-  // أقفل الخاصية على false
-  function applyLock() {
-    if (window.theoKzObjects) {
-      lockProp(window.theoKzObjects, 'noSkin', false);
-    } else {
-      setTimeout(applyLock, 50);
-    }
-  }
-  applyLock();
-
-  // منع تبديل noSkin عبر الهوتكي (عادة F)
-  window.addEventListener('keydown', function (e) {
-    if (e.key && e.key.toLowerCase() === 'f') {
-      e.stopImmediatePropagation();
-    }
-  }, true);
-
-  // safety net: يتأكد باستمرار أنها false
-  setInterval(() => {
-    if (window.theoKzObjects && window.theoKzObjects.noSkin !== false) {
-      try { window.theoKzObjects.noSkin = false; } catch (_) {}
-    }
-  }, 500);
-})();
 
 /* === Smoothness Merge Bundle ===
  * Features:
@@ -504,3 +329,4 @@ this.ji = {};
   // حاويات ومؤشرات
   this.Bd={};this.yd={};this.Sh=[];this.Th=null;
 }).call(this);
+
