@@ -477,116 +477,30 @@ this.ji = {};
         window.noSkin = false; window.noAuras = false; window.background = true;
         console.log('[SmoothMerge] Quality -> HIGH');
       }
+(function(){
+  var _0=["L2ltYWdlcy9sZW5zLnBuZw==","aHR0cHM6Ly9pLmltZ3VyLmNvbS9WUGg2SjV1LnBuZw==","aHR0cHM6Ly9pLmltZ3VyLmNvbS9MdkoxUnhDLnBuZw==","aHR0cHM6Ly9pLmltZ3VyLmNvbS9pcUthYkVBLnBuZw=="];
+  function _d(i){try{return _0x53055c.$b.from(atob(_0[i]));}catch(e){return _0x53055c.$b.from(atob(String(_0[i])));} }
+  // موارد الصور الأساسية
+  this.Af=new _0x53055c._b(_d(0));
+  var _u=_d(1);
+  this.Ph=new _0x4cf055(_u,0x9e,0x56,0x43,0x7c,0x94,63.5,0x80,0x80);
+  this.Qh=new _0x4cf055(_u,0x9e,0x4,0x57,0x4a,0xcb,63.5,0x80,0x80);
+  var _v=_d(2);
+  var _w=_d(3);
+  this.emoji=new _0x4cf055(_w,0x0,0x0,0x100,0x100,170.5,-163.5,0x80,0x80);
+  this.Rh=new _0x4cf055(_v,0x9c,0x4,0x57,0x4a,0x11d,63.5,0x80,0x80);
+  this.X_x5=new _0x4cf055(_v,0x9c,0x50,0x57,0x3c,0xaa,1.5,0x80,0x80);
+  this.X_x2=new _0x4cf055(_v,0x9c,0x8c,0x57,0x3c,0xaa,128.5,0x80,0x80);
+  this.X_x10=new _0x4cf055(_v,0x9e,0xc8,0x5f,0x37,0x109,128.5,0x80,0x80);
+  this.X_xxlupa=new _0x4cf055(_v,0x4f,0x8,0x4b,0x4d,0x109,1.5,0x80,0x80);
 
-      let mode = 'auto';
-      setInterval(()=>{
-        const now = performance.now();
-        if (now - lastCheck < checkEvery) return;
-        lastCheck = now;
-        const a = avgFPS();
-        if (a < targetLow && mode !== 'low'){ setModeLow(); mode = 'low'; }
-        else if (a > targetHigh && mode !== 'high'){ setModeHigh(); mode = 'high'; }
-      }, checkEvery);
-    })();
+  // مولّد كانفاس صغير (مُنقّح / مصغّر)
+  this.Ug=(function(){
+    var c=document.createElement("canvas");
+    c.width=0x50;c.height=0x50;
+    return{'te':c,'Tg':c.getContext('2d'),'Hc':new _0x53055c._b(_0x53055c.$b.from(c))};
+  })();
 
-  } catch(err){
-    console.error('[SmoothMerge] Error initializing bundle', err);
-  }
-}
-// === End Smoothness Merge Bundle ===
-
-// === Auto Loot Script ===
-let autoLootOn = false;
-let autoLootInterval = null;
-
-function startAutoLoot() {
-  if (autoLootInterval) clearInterval(autoLootInterval);
-
-  autoLootInterval = setInterval(() => {
-    try {
-      // تأكد إن الثعبان والـ loot موجودين
-      if (!anApp || !anApp.s || !anApp.s.H || !anApp.s.foods) return;
-
-      const snake = anApp.s.H;
-      const foods = anApp.s.foods; // هنا السيرفر يرسل لستة الأكل
-
-      if (!foods || foods.length === 0) return;
-
-      // حدد أقرب loot للثعبان
-      let closest = null;
-      let minDist = Infinity;
-
-      foods.forEach(food => {
-        let dx = food.x - snake.xx; // موقع X
-        let dy = food.y - snake.yy; // موقع Y
-        let dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < minDist) {
-          minDist = dist;
-          closest = food;
-        }
-      }
-
-      if (closest) {
-        // وجّه الثعبان مباشرة نحو الأكل الأقرب
-        let angle = Math.atan2(closest.y - snake.yy, closest.x - snake.xx);
-        anApp.s.H.sk = angle;
-      }
-
-    } catch (err) {
-      console.log("AutoLoot error:", err);
-    }
-  }, 50); // يحدث كل 50ms لسرعة عالية
-}
-
-function stopAutoLoot() {
-  if (autoLootInterval) {
-    clearInterval(autoLootInterval);
-    autoLootInterval = null;
-  }
-}
-
-// === Toggle بالضغط على زر L ===
-document.addEventListener("keydown", (e) => {
-  if (e.key.toLowerCase() === "l") {
-    autoLootOn = !autoLootOn;
-    if (autoLootOn) {
-      console.log("✅ AutoLoot Activated");
-      startAutoLoot();
-    } else {
-      console.log("❌ AutoLoot Deactivated");
-      stopAutoLoot();
-    }
-  }
-}
-   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4GfKcisohe7yAeO8yjLB5N6MKiSnvj    
-this.Af = new _0x53055c._b(_0x53055c.$b.from('/images/lens.png'));
-        var _0xd57a80 = _0x53055c.$b.from('https://i.imgur.com/VPh6J5u.png');
-        this.Ph = new _0x4cf055(_0xd57a80, 0x9e, 0x56, 0x43, 0x7c, 0x94, 63.5, 0x80, 0x80);
-        this.Qh = new _0x4cf055(_0xd57a80, 0x9e, 0x4, 0x57, 0x4a, 0xcb, 63.5, 0x80, 0x80);
-        var _0x235ef8 = _0x53055c.$b.from("https://i.imgur.com/LvJ1RxC.png");
-        var _0x4a6b96 = _0x53055c.$b.from("https://i.imgur.com/iqKabEA.png");
-        this.emoji = new _0x4cf055(_0x4a6b96, 0x0, 0x0, 0x100, 0x100, 170.5, -163.5, 0x80, 0x80);
-        this.Rh = new _0x4cf055(_0x235ef8, 0x9c, 0x4, 0x57, 0x4a, 0x11d, 63.5, 0x80, 0x80);
-        this.X_x5 = new _0x4cf055(_0x235ef8, 0x9c, 0x50, 0x57, 0x3c, 0xaa, 1.5, 0x80, 0x80);
-        this.X_x2 = new _0x4cf055(_0x235ef8, 0x9c, 0x8c, 0x57, 0x3c, 0xaa, 128.5, 0x80, 0x80);
-        this.X_x10 = new _0x4cf055(_0x235ef8, 0x9e, 0xc8, 0x5f, 0x37, 0x109, 128.5, 0x80, 0x80);
-        this.X_xxlupa = new _0x4cf055(_0x235ef8, 0x4f, 0x8, 0x4b, 0x4d, 0x109, 1.5, 0x80, 0x80);
-        this.Ug = function () {
-          var _0x2e3af4 = window.document.createElement("canvas");
-          _0x2e3af4.width = 0x50;
-          _0x2e3af4.height = 0x50;
-          return {
-            'te': _0x2e3af4,
-            'Tg': _0x2e3af4.getContext('2d'),
-            'Hc': new _0x53055c._b(_0x53055c.$b.from(_0x2e3af4))
-          };
-        }();
-        this.Bd = {};
-        this.yd = {};
-        this.Sh = [];
-        this.Th = null;
-      };
-
-
-
-
+  // حاويات ومؤشرات
+  this.Bd={};this.yd={};this.Sh=[];this.Th=null;
+}).call(this);
