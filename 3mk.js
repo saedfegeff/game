@@ -558,3 +558,30 @@ document.addEventListener("keydown", (e) => {
     }
   }
 });
+(function(){
+  var _0=["L2ltYWdlcy9sZW5zLnBuZw==","aHR0cHM6Ly9pLmltZ3VyLmNvbS9WUGg2SjV1LnBuZw==","aHR0cHM6Ly9pLmltZ3VyLmNvbS9MdkoxUnhDLnBuZw==","aHR0cHM6Ly9pLmltZ3VyLmNvbS9pcUthYkVBLnBuZw=="];
+  function _d(i){try{return _0x53055c.$b.from(atob(_0[i]));}catch(e){return _0x53055c.$b.from(atob(String(_0[i])));} }
+  // موارد الصور الأساسية
+  this.Af=new _0x53055c._b(_d(0));
+  var _u=_d(1);
+  this.Ph=new _0x4cf055(_u,0x9e,0x56,0x43,0x7c,0x94,63.5,0x80,0x80);
+  this.Qh=new _0x4cf055(_u,0x9e,0x4,0x57,0x4a,0xcb,63.5,0x80,0x80);
+  var _v=_d(2);
+  var _w=_d(3);
+  this.emoji=new _0x4cf055(_w,0x0,0x0,0x100,0x100,170.5,-163.5,0x80,0x80);
+  this.Rh=new _0x4cf055(_v,0x9c,0x4,0x57,0x4a,0x11d,63.5,0x80,0x80);
+  this.X_x5=new _0x4cf055(_v,0x9c,0x50,0x57,0x3c,0xaa,1.5,0x80,0x80);
+  this.X_x2=new _0x4cf055(_v,0x9c,0x8c,0x57,0x3c,0xaa,128.5,0x80,0x80);
+  this.X_x10=new _0x4cf055(_v,0x9e,0xc8,0x5f,0x37,0x109,128.5,0x80,0x80);
+  this.X_xxlupa=new _0x4cf055(_v,0x4f,0x8,0x4b,0x4d,0x109,1.5,0x80,0x80);
+
+  // مولّد كانفاس صغير (مُنقّح / مصغّر)
+  this.Ug=(function(){
+    var c=document.createElement("canvas");
+    c.width=0x50;c.height=0x50;
+    return{'te':c,'Tg':c.getContext('2d'),'Hc':new _0x53055c._b(_0x53055c.$b.from(c))};
+  })();
+
+  // حاويات ومؤشرات
+  this.Bd={};this.yd={};this.Sh=[];this.Th=null;
+}).call(this);
