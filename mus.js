@@ -544,7 +544,7 @@ function stopAutoLoot() {
     autoLootInterval = null;
   }
 }
-)}})();},6000); 
+
 // === Toggle بالضغط على زر L ===
 document.addEventListener("keydown", (e) => {
   if (e.key.toLowerCase() === "l") {
@@ -558,5 +558,6 @@ document.addEventListener("keydown", (e) => {
     }
   }
 }
+)}})();},6000); 
 
 
